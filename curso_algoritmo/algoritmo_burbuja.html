@@ -1,0 +1,105 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Algoritmos</title>
+
+<center><h2><em><strong><font color="blue">Algoritmo Burbuja</font></strong></em></h2></center>
+
+<body>
+	
+
+	<p><h3><em><strong><font color="red">Introducción</font></strong></em></h3>
+<p>El algoritmo de ordenamiento por burbujeo (o bubblesort) es un algoritmo "simple" de ordenamiento. La idea es que se van a comparar pares consecutivos de elementos, y en caso en que estén desordenados, es decir que el primer elemento (izquierda) sea mayor al segundo (derecha), se hará un intercambio de posiciones.</p>
+
+<p>Ejemplo bien simple para una lista de dos elementos:</p>
+<p>Ej1: [     20,     45 ] -> [     20,     45     ]</p>
+<p>Ej2: [     45,     20 ] -> [     20,     45     ]</p>
+<p>Vamos a llegar de a poco a la solución final del algoritmo, vamos por partes.</p>
+
+<p><h3><em><strong><font color="red">Primera Iteración</font></strong></em></h3></p>
+<p>Entonces, si tenemos que comparar cada elemento con el siguiente, podríamos pensar que el algoritmo es:</p>
+<p>Iterar cada elemento de la lista (hasta el anteúltimo), e ir comparándolo con el siguiente.</p> 
+<p>Cambiarlos de posiciones si están desordenados </p>
+<p>Por qué sucede este comportamiento ?</p>
+<p>Fácil, porque nuestro algoritmo va recorriendo desde principio hacia el fin de la lista, y va de alguna forma desplazando el mayor (entre comparar pares), hacia atrás. Entonces cuando agarra el máximo lo va a ir deplazándo complétamente hacia la derecha (atrás) dónde va a terminar para el final de la iteración.</p>
+<p align="center"><img src="algoritmo_1.png" align="middle" width="500" height="400"> </p>
+<p align="center"><img src="algoritmo_2.png" align="middle" width="500" height="400"> </p>
+
+<p>En cambio no se garantiza que el mínimo haya quedado en la izquierda, porque cuando lo encontramos, no sabemos que es el mínimo, solo sabemos que es menor que el anterior, por lo que le cambiamos el lugar. Así que a lo sumo en una iteración se mueve 1 posición hacia la izquierda</p>
+<p align="center"><img src="algoritmo_3.png" align="middle" width="500" height="400"> </p>
+
+<p>Es importante entender esto para el siguiente punto.</p>
+
+<p>Pasos Innecesarios: Acotando Pasos en Iteraciones</p>
+<p>Vimos entonces que los conejos (elementos más grandes) van hacia el final muy rápidamente porque ese es el sentido de iteración ! Hacía el fondo. (Podríamos probar una implementación inversa que vaya desde el fin hacia el principio moviendo los más chicos hacia el principio. Sería lo mismo)</p>
+<p>Entonces, podemos saber que:</p>
+<p>En la primer iteración el máximo elemento va a terminar último
+<p>En la segunda iteración, el anterior al máximo va a terminar en el anteúltimo
+... (etc)</p>
+<p>A saber: Iteración N => asegura que el elemento en la posición (tamaño - N) estará bien ordenado.</p>
+Como vemos en cada iteración se requiere un paso menos. De hecho la Iteración 5 no tiene sentido porque ninguno de sus pasos haría un reordenamiento, ya que todo está ordenado.</p>
+<p>Entonces si los elementos se van ubicando desde el final hacia el principio podemos pensar como que cada iteración solo debe trabajar con una "sublista", desde el principio hasta N.Ejemplo:</p>
+<p>Fíjense:</p>
+<p>Nro Elementos "N" = 5</p>
+<p>Iteraciones: N - 1</p>
+<p>Pasos Iteracion(i) = N - i</p>
+<p>Iteración 1 = 4 pasos (comparaciones)</p>
+<p>Iteración 2 = 3</p>
+<p>Iteración 3 = 2</p>
+<p>Iteración 4 = 1</p>
+<p>Entonces ya podemos repensar nuestra implementación:</p>
+<p>N - i veces hacer con indice "j"</p>
+<p>comparar y ordenar lista[j] , lista[j+1]</p>
+<p>Leyenda:
+<p>En rojo los elementos que se movieron a la derecha
+<p>Subrayados los pares que se compararon en dicho paso.
+<p>Con diferentes colores los pasos de cada iteración.
+
+<p>Iteraciones Innecesarias: Atajo para acotar Iteraciones</p>
+<p>Todavía podemos realizar una optimización más.</p>
+<p>Veamos el ejemplo anterior. Cuántos movimientos se hicieron por iteración:</p>
+<p>Iteración 0:     6</p>
+<p>Iteracion 1:     4</p>
+<p>Iteracion 2:     2</p>
+<p>Iteracion 3:     2</p>
+<p>Iteracion 4:     1</p>
+<p>Iteracion 5:     0</p>
+<p>Iteracion 6:     0</p>
+<p>Iteracion 7:     0</p>
+<p align="center"><img src="algoritmo_4.png" align="middle" width="500" height="400"> </p>
+<p>Quiere decir que se recorrió toda la lista (en realidad solo hasta el elemento 4 porque lo que sigue ya estará con los valores máximos, comparando, y no hubo ningún elemento que fuera mayor al siguiente. Esto quiere decir que esa "sublista" ya está ordenada de menor a mayor !!</p>
+<p>Con lo cual, una vez que una iteración no realizar ningún movimiento, no hay forma de que las siguientes tenga que modificar algo. Con lo cual no tiene sentido seguir ejecutando.
+Esto nos dá pié a realizar una nueva mejora para cortar la ejecución antes.</p>
+
+
+<p align="center"><img src="algoritmo_5.png" align="middle" width="500" height="400"> </p>
+
+<p><h3><em><strong><font color="red">Versión Recursiva</font></strong></em></h3></p>
+<p>
+
+<p>Hasta ahora veníamos trabajando con todas versiones secuenciales, es decir que iteraban con ciclos. Sin embargo como ya vimos hay un patrón en las iteraciones. Podiamos ver cada iteración como el procesamiento de una sublista, ya que la iteración anterior se ocupó de "burbujear" el elemento más grande a la última posición. Definamos entonces una versión recursiva:</p>
+<p>Caso Base: bubbleSort de una lista de un elemento, retorna esa misma lista</p>
+<p>Regla Recursiva:</p>
+<p>Realizar un burbujeo: </p>
+<p>es decir recorrer la lista comparando elemento con el siguiente y cambiándo las posiciones.</p> 
+<p>Esto asegura que el elemento al final de la lista será ahora el mayor</p>
+<p>Ordenar recursivamente la lista resultado del burbujeo, sin el último elemento</p>
+<p>Retornar el resultado de la llamada recursiva concatenado con el último elemento de la nuestra</p>
+<p align="center"><img src="algoritmo_6" align="middle" width="500" height="400"> </p>
+<p><h3><em><strong><font color="red">Análisis del Algoritmo</font></strong></em></h3></p>
+<p align="center"><img src="algoritmo_7" align="middle" width="500" height="400"> </p>
+<p>
+Versión original (segunda que vimos) con N iteraciones, con N Pasos: 
+O(n2)</p>
+<p>Ej: bubbleSort(5) => 25</p>
+<p>Versión con la optimización de recortar pasos:
+O( (n2 - n) / 2)</p>
+<p>Ej: bubbleSort(5) => 25 - 5 / 2 => 10 </p>
+<p>Esto se lee porque:</p>
+<p>n2 daría todas las iteraciones con todos los pasos.</p>
+<p>como no hacemos la última iteración se resta un n (5 pasos)</p>
+<p>Pero en promedio cada iteración tendrá la mitad de pasos, porque la primera tiene N (5 pasos), mientras que la última tiene solo 1. Entonces es lo mismo que decir, la mitad.</p>
+ 
+</body>
+</html>

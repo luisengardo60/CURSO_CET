@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Edit_Mensaje SYSTEM "Edit_Mensaje.dtd">
+<teoria>
+<Filtros>
+
+<tema>
+	<filtros>
+		Los filtros son utilizados para validar entradas externas. Ello tiene el objetivo de asegurar que la aplicación desarrollada trabaje con los datos correctos, que eviten un malfuncionamiento del aplicativo.
+	</filtros>
+</tema>
+
+	<tema>
+	<filtros>
+		El siguiente es un ejemplo de filtro para remover todas las etiquetas:
+	$newstr = filter_var($str, FILTER_SANITIZE_STRING)
+	</filtros>
+</tema>
+
+<tema>
+	<filtros>
+		El siguiente filtro da una condición cierta o falsa, referente  a si la variable es integer o no.
+	filter_var($int, FILTER_VALIDATE_INT)
+	</filtros>
+</tema>
+
+	<tema>
+	<filtros>
+	La siguiente condición es un filtro más avanzado, y verifica si el valor está en un rango:
+	(filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false).
+
+	Así, se puede vwerificar IPv4, IPv6, URL e email, como ejemplos de aplicación de los filtros, para validar entradas externas, que pudiesen generar errores en los aplicativos, de no considerarse.
+	</filtros>	
+</tema>
+
+<tema>
+	<manejo_error_1>
+		Parameter
+Description
+error_level
+Required. Specifies the error report level for the user-defined error. Must be a value number. See table below for possible error report levels
+error_message
+Required. Specifies the error message for the user-defined error
+error_file
+Optional. Specifies the filename in which the error occurred
+error_line
+Optional. Specifies the line number in which the error occurred
+error_context
+Optional. Specifies an array containing every variable, and their values, in use when the error occurred
+</manejo_error_1>
+</tema>
+
+<tema>
+	<manejo_error_2>
+Value
+Constant
+Description
+2
+E_WARNING
+Non-fatal run-time errors. Execution of the script is not halted
+8
+E_NOTICE
+Run-time notices. The script found something that might be an error, but could also happen when running a script normally
+256
+E_USER_ERROR
+Fatal user-generated error. This is like an E_ERROR set by the programmer using the PHP function trigger_error()
+512
+E_USER_WARNING
+Non-fatal user-generated warning. This is like an E_WARNING set by the programmer using the PHP function trigger_error()
+1024
+E_USER_NOTICE
+User-generated notice. This is like an E_NOTICE set by the programmer using the PHP function trigger_error()
+4096
+E_RECOVERABLE_ERROR
+Catchable fatal error. This is like an E_ERROR but can be caught by a user defined handle (see also set_error_handler())
+8191
+E_ALL
+All errors and warnings (E_STRICT became a part of E_ALL in PHP 5.4)
+	</manejo_error_2>
+</tema>
+
+<tema>
+	<excepciones>
+		What is an Exception
+With PHP 5 came a new object oriented way of dealing with errors.
+Exception handling is used to change the normal flow of the code execution if a specified error (exceptional) condition occurs. This condition is called an exception.
+
+This is what normally happens when an exception is triggered:
+The current code state is saved
+The code execution will switch to a predefined (custom) exception handler function
+Depending on the situation, the handler may then resume the execution from the saved code state, terminate the script execution or continue the script from a different location in the code
+We will show different error handling methods:
+Basic use of Exceptions
+Creating a custom exception handler
+Multiple exceptions
+Re-throwing an exception
+Setting a top level exception handler
+Note: Exceptions should only be used with error conditions, and should not be used to jump to another place in the code at a specified point.
+	</excepciones>
+	</tema>
+
+	<tema>
+	<excepciones>
+		Try, throw and catch
+To avoid the error from the example above, we need to create the proper code to handle an exception. 
+Proper exception code should include:
+Try - A function using an exception should be in a "try" block. If the exception does not trigger, the code will continue as normal. However if the exception triggers, an exception is "thrown"
+Throw - This is how you trigger an exception. Each "throw" must have at least one "catch"
+Catch - A "catch" block retrieves an exception and creates an object containing the exception information
+	</excepciones>
+	</tema>
+
+	<tema>
+	<excepciones>
+		Creating a Custom Exception Class
+To create a custom exception handler you must create a special class with functions that can be called when an exception occurs in PHP. The class must be an extension of the exception class.
+The custom exception class inherits the properties from PHP's exception class and you can add custom functions to it.
+	</excepciones>
+	</tema>
+
+</Filtros>
+
+
+
+
+<mysql>
+
+	<tema>
+<use>
+mysql> USE menagerie 
+Database changed
+</use>
+</tema>
+
+<tema>
+<show>
+mysql> SHOW TABLES; 
+Empty set (0.00 sec)
+</show>
+</tema>
+
+<tema>
+<create>
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),    -> species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+</create>
+</tema>
+
+<tema>
+<describe_table>
+mysql> DESCRIBE pet;
+</describe_table>
+</tema>
+
+<tema>
+<load_data>
+
+mysql> LOAD DATA LOCAL INFILE '/path/pet.txt' INTO TABLE pet;
+
+
+Opcionalmente puede especificar en la sentencia LOAD DATA los caracteres que actuarán como separador de campo y fin de línea, pero los valores por defecto son tabulación y nueva línea. Estos son suficientes para que la sentencia lea correctamente el fichero pet.txt
+</load_data>
+</tema>
+
+<tema>
+<insert>
+mysql> INSERT INTO pet    -> VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL)
+</insert>
+</tema>
+
+ <tema>
+ <select>
+ 	Extraer información de una tabla
+La forma más simple de SELECT recupera todo lo que hay en la tabla:
+mysql> SELECT * FROM pet; 
+Esta forma de SELECT es útil si se quiere revisar la tabla completa, por ejemplo, despues de haberla cargado con un conjunto de datos inicial. Por ejemplo, puede ocurrir que la fecha de nacimiento de Bowser no parezca correcta. Consultando los papeles de pedigri, se descubre que el año correcto de nacimiento es 1989, no 1979.
+
+Existen al menos dos formas de solucionarlo:
+• Editando el fichero pet.txt para corregir el error, vaciando la tabla y volviendola a llenar con los datos. Para esto se usan las sentencias DELETE y LOAD DATA:
+</select>
+</tema>
+
+<tema>
+<delete>
+mysql> DELETE FROM pet; mysql> LOAD DATA LOCAL INFILE 'pet.txt' INTO TABLE pet;
+No obstante, si opta por esto, deberá volver a cargar el registro de Puffball.
+• Corrigiendo únicamente el registro erróneo. Para esto se usa la sentencia UPDATE:
+mysql> UPDATE pet SET birth = '1989-08-31' WHERE name = 'Bowser';
+</delete>
+</tema>
+
+<tema>
+<select>
+Seleccionar registros específicos
+mysql> SELECT * FROM pet WHERE name = 'Bowser';
+mysql> SELECT * FROM pet WHERE species = 'dog' AND sex = 'f';
+mysql> SELECT * FROM pet WHERE species = 'snake' OR species = 'bird';
+mysql> SELECT * FROM pet WHERE (species = 'cat' AND sex = 'm')    -> OR (species = 'dog' AND sex = 'f');
+</select>
+</tema>
+
+<tema>
+<select>
+Seleccionar columnas concretas
+mysql> SELECT name, birth FROM pet;
+mysql> SELECT owner FROM pet
+mysql> SELECT DISTINCT owner FROM pet
+mysql> SELECT name, species, birth FROM pet    -> WHERE species = 'dog' OR species = 'cat'
+</select>
+</tema>
+
+<tema>
+<select>
+ Ordenar registros
+mysql> SELECT name, birth FROM pet ORDER BY birth;
+mysql> SELECT name, birth FROM pet ORDER BY birth DESC; 
+mysql> SELECT name, species, birth FROM pet    -> ORDER BY species, birth DESC; 
+Cálculos sobre fechas
+</select>
+</tema>
+
+<tema>
+<primary_key>
+	CREATE TABLE users(
+   user_id INT AUTO_INCREMENT PRIMARY KEY,
+   username VARCHAR(40),
+   password VARCHAR(255),
+   email VARCHAR(255
+	</primary_key>
+</tema>
+
+<tema>
+	<primary_key>
+		CREATE TABLE roles(
+   role_id INT AUTO_INCREMENT,
+   role_name VARCHAR(50),
+   PRIMARY KEY(role_id)
+);
+
+		</primary_key>
+
+	</tema>
+	<tema>
+			<primary_key>
+				ALTER TABLE table_name
+ADD PRIMARY KEY(primary_key_column);
+			</primary_key>
+</tema>
+
+</mysql>
+</teoria>
+
+
+
+	

@@ -1,0 +1,34 @@
+* { padding: 0; margin: auto; text-align: center; }
+#navegador { heigth:40px; width: 1300px; background-color: black; padding: 5px; }
+#navegador li { margin:5px; padding: 5px; background-color: green; width: 100px; float: left; list-style-type: none;  position: relative;  }
+#navegador li a:link { color: #feffe4; text-decoration: none; }
+#navegador li a:visited { color: #feffe4; text-decoration: none; }
+#navegador li a:hover { color:#ffd7a9 ; text-decoration: none; }
+#navegador li a:active { color:#ffd7a9 ; text-decoration: none; }
+#subseccion1 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion2 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion3 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion4 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion5 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion6 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion7 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both; }
+#subseccion8 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both;}
+#subseccion9 { padding: 5px; width: 200px;
+position: absolute; top: 100%; left: 0px; background-color: black; font-family: arial; display: none; }
+borrar { clear: both;}

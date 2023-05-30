@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Árboles</title>
+
+<center><h2><em><strong><font color="blue">Árboles</font></strong></em></h2></center>
+
+<body>
+	
+
+	<p><h3><em><strong><font color="red">Introducción</font></strong></em></h3>
+<p>
+Algunas definiciones:</p>
+<p>Un árbol es una estructura de datos enlazada que organiza elementos en forma jerárquica. Es decir, hay una relación padre/hijos.</p> 
+<p>-Cada nodo puede tener más de un hijo, pero un solo padre.</p> 
+<p>-Existe un nodo que no tiene padre denominado raiz. </p>
+<p>-Los nodos que no tienen hijos se denominan hojas</p>
+<p>-Un árbol es de orden N (o N-ario) cuando la máxima cantidad de hijos que puede tener un nodo es N.</p>
+<p>-La profundidad de un árbol es la distancia (saltos entre nodos) desde la raiz hasta la hoja más lejana.</p>
+<p align="center"><img src="arboles.png" align="middle" width="500" height="400"> </p>
+
+<p><h3><em><strong><font color="red">Visión Recursiva</font></strong></em></h3></p>
+<p>Cada rama de un árbol puede ser visto como un sub-árbol. De esta forma, el árbol genealógico de la abuela Bouvier está compuesto por el árbol de Marge, el de Patty y el de Selma. Esto repercute en el estilo de programación: todas las funciones que recorren o modifican el árbol hacen uso de características recursivas. Esto significa que a veces el término nodo y árbol se usan indistintamente, lo cual puede causar confusión al desprevenido. </p> 
+
+Recorrer un árbol significa comenzar a visitar a cada uno de los elementos (tanto al elemento de la raiz como a los elementos de sus descendientes). A veces se realiza porque se quiere ejecutar algo por cada uno u otras veces es porque se está buscando uno en particular. 
+Existen dos maneras de recorrer un árbol: profundidad primero y ancho primero. 
+
+<p><h3><em><strong><font color="red">Profundidad Primero</font></strong></em></h3></p>
+Esta forma es la más sencilla: consiste en explorar toda una rama antes de pasar a la siguiente. Es decir, hasta no terminar de recorrer toda la rama de marge, no iniciará con Patty. 
+Acá un diagrama que muestra el órden de recorrido sobre un árbol:
+<p align="center"><img src="arboles_2.png" align="middle" width="600" height="400"> </p>
+
+<p><h3><em><strong><font color="red">Ancho Primero</font></strong></em></h3></p>
+Esta forma es un poco más compleja pero puede ser conveniente dependiendo del problema. En nuestro ejemplo irá recorriendo generación a generación: Primero la abuela, luego todas las hijas, y luego todos los nietos. 
+<p>Acá otro diagrama a modo esquemático:</p>
+<p align="center"><img src="arboles_3.png" align="middle" width="600" height="400"> </p>
+<p>Para poder resolver este algoritmo, es necesario retrasar la ejecución de la función sobre los hijos hasta que no se haya terminado de ejecutar todos los hermanos/primos. Por eso se usa una cola  (Primero que entra, Primero que sale) para lograr esto. Cuando se visita a un nodo, ejecuta la función, agrega sus hijos a la cola, y luego llama a la función recursiva pero en lugar de hacerlo sobre algún hijo suyo (como hacía profundidad primero) lo hace sobre el próximo de la cola, que seguramente es un alguien de su nivel  si aún quedan o el primero del próximo nivel.</p>
+
+
+
+
+
+	</body>
+	</html>

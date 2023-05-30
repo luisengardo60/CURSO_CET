@@ -1,0 +1,283 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Curso PHP CET</title>
+<!--Curso básico e intermedio de PHP-->
+<!--Lugar:Centro de Estudios de Telecomunicaciones
+Instructor: Franklin Planchart
+Franklin Planchart es MSc en Ingeniería Eléctrica de la UCV
+Especialista de Telecomunicaciones de la UCV e Ingeniero de Sistemas de la UNEXPO
+Fecha del curso: Julio 2017. Duración: 5 dias.
+Bibliografía básica: PHP5 a través de ejemplos
+© Septiembre 2017 copy right Franklin Planchart School
+Autor: Abraham Gutierrez& Ginés Bravo-->
+<center>
+	
+	<p align="center"><img src="portada.gif" align="right" width="180" height="120"> </p>
+	<h1>Curso PHP. Principios fundamentales</h1>
+	<h2><font color="blue">Centro de Estudios de Telecomunicaciones. CANTV</font></h2>
+	<h4>© Septiembre 2017 copy right Franklin Planchart School</h4>
+	<style type="text/css">
+	* {
+		margin:0px;
+		padding:1px;
+	}
+
+	#header {
+		margin:auto;
+		width:2000px;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+
+	ul, ol {
+		list-style:none;
+	}
+
+	.nav > li {
+		float:left;
+	}
+
+	.nav li a {
+		background-color:#008;
+		color:#fff;
+		text-decoration:none;
+		padding:10px 12px;
+		display:block;
+	}
+
+	.nav li a:hover {
+		background-color:#04b45f;
+	}
+
+	.nav li ul {
+		display:none;
+		position:absolute;
+		min-width:140px;
+	}
+
+	.nav li:hover > ul {
+		display:block;
+	}
+
+	.nav li ul li {
+		position:relative;
+	}
+
+	.nav li ul li ul {
+		right:-140px;
+		top:0px;
+	}
+
+	</style>
+<body>
+	<div id="header">
+		<ul class="nav">
+			<li><a href="">Principios</a>
+				<ul>
+					<li><a href="">Conceptos</a>
+						<ul>
+							<li><a href="principios_1.html"  target="" title="Definición Básica...que necesito" >Que es PHP</a></li>
+							<li><A HREF="capitulo_2_tema_1.php" TARGET="" title="Ejemplos variables en coma flotante">Variables</A></li>
+							<li><a href="capitulo_2_tema_3.php" target="" title="Ejemplos de variables en arreglos">Arreglos</a></li>
+							<li><a href="capitulo_2_tema_4.php" target ="" title="Conversión de variables por casting">Casting</a></li>
+							<li><a href="capitulo_2_tema_5.php" target="" title="Como trabajan las variables de variables">Variables/Var</a></li>
+						</ul>
+					</li>
+					<li><a href="">Ejemplos de primer nivel</a>
+						<ul>
+							<li><a href="capitulo_0_tema_1" target="" title="Saludo típico.">Hola mundo</a></li>
+							<li><a href="capitulo_0_tema_2" target="" title="suma sencilla">suma</a></li>
+							<li><a href="capitulo_0_tema_3" target="" title="tabla multiplicar">tabla</a></li>
+							<li><a href="capitulo_0_tema_4" target="" title="potencias.">Potencias</a></li>
+						</ul>
+					</li>
+					<li><a href="">Ejemplos de segundo nivel</a>
+						<ul>
+							<li><a href="capitulo_2_tema_6.php" target="" title= "visualizar co  gettype y settype">Visualizar var</a></li>
+							<li><a href="capitulo_2_tema_7.php" target="" title="Ver estado  con isset y empty">Estado var</a></li>
+							<li><a href="capitulo_2_tema_8.php" target="" title="Ver estado con  isbool">Estado bool</a></li>
+							<li><a href="capitulo_2_tema_10.php" target="" title="Visualizar información  interna">PHP info</a></li>
+							<li><a href="capitulo_2_tema_12.php" target="" title="Visualizar arreglo asocitivo">arreglo asociativo</a></li>
+						</ul>
+					</li>
+					<li><a href="">Interaccion usuario</a>
+						<ul>
+							  <li><a href="tutorial%20php.pdf" target="" title="Documento explicativo formularios">Tutorial</a></li>
+							<li><a href="capitulo_2_tema_14.php" target="" title="una introducción al formulario">Formulario uno</a></li>
+							<li><a href="capitulo_2_tema_15.php" target="" title="Formulario con opciones">Formulario_2</a></li>
+						</ul>
+					</li>					
+				</ul>
+				<li><a href="">Controles</a>
+					<ul>
+						<li><a href="">Sentencia IF</a>
+							<ul>
+								<li><a href="capitulo_3_tema_1.php"target="" title="Ejemplo solo IF">Solo IF</a></li>
+								<li><a href="capitulo_3_tema_2.php" target="" title="Varios IF anidados">IF anidado</a></li>
+								<li><a href="capitulo_3_tema_3.php"target="" title="Ejemplo IF en combinación con ELSE">IF&ELSE</a></li>
+								<li><a href="capitulo_3_tema_5.php"target="" title="IF combinado con ELSE-IF">IF&ELSE-IF</a></li>
+								<li><a href="capitulo_3_tema_8.php" target="" title="IF en una sola línea decisoria">IF compactado</a></li>
+							</ul>
+						</li>
+						<li><a href="">If combinados y compactos</a>
+							<ul>
+								 <li><a href="capitulo_3_tema_5.php"target="" title="IF combinado con ELSE-IF">IF&ELSE-IF</a></li>
+								<li><a href="capitulo_3_tema_8.php" target="" title="IF en una sola línea decisoria">IF compactado</a></li>
+								<li><a href="capitulo_3_tema_9.php"target="" title="Ejemplo IF en combinación con ELSE">IF&ELSE</a></li>
+								<li><a href="capitulo_3_tema_20.php" target="" title="IF y FOR con continue">IF&for&continue</a></li>
+							</ul>
+						</li>
+						<li><a href="">switche</a>
+							<ul>
+								  <li><a href="capitulo_3_tema_9.php"target="" title="opciones con switche">switche-case</a></li>
+							</ul>
+						</li>
+						<li><a href="">FOr y foreach</a>
+							<ul>
+								  <li><a href="capitulo_3_tema_11.php"target="" title="iteraciones con FOR">FOR simple</a></li>
+								<li><a href="capitulo_3_tema_12.php" target="" title="anidar varios for">FOR anidados</a></li>
+								<li><a href="capitulo_3_tema_13.php"target="" title="foreach para arreglos vectoriales">FOREACH</a></li>
+								<li><a href="capitulo_3_tema_17.php" target="" title="foreach combinado con continue">foreach&continue</a></li>
+							</ul>
+						</li>
+						<li><a href="">while</a>
+							<ul>
+								 <li><a href="capitulo_3_tema_14.php"target="" title="iteraciones con while">while simple</a></li>
+								<li><a href="capitulo_3_tema_15.php" target="" title="while-do combinado">while&do</a></li>
+								<li><a href="capitulo_3_tema_16.php"target="" title="while y break combinados">while&break</a></li>
+							</ul>
+						</li>
+						<li><a href="">Continue</a>
+							<ul>
+								<li><a href="capitulo_3_tema_20.php"target="" title="opciones combinadas con continue">continue&for</a></li>
+								<li><a href="capitulo_3_tema_21.php"target="" title="opciones combinadas con continue y break">continue&while</a></li>
+								<li><a href="capitulo_3_tema_22.php" target="" title="opciones combinadas con continue y break">continue&while</a></li>
+							</ul>
+						</ul>
+					</li>
+					<li><a href="">Oper. de ACBL</a>
+						<ul>
+							<li><a href="operador_asignacion.php" target="" title="Operadores aritméticos y de asignación">Oper.arit.</a>
+							</li>
+							<li><a href="incremento_decremento.php" target="" title="Operadores de incremento y decremento">Inc/Dec</a></li>
+							<li><a href="operador_comparativo.php" target="" title="Operadores comparativos,binarios y lógicos">Oper. CBL</a></li>
+							<li><a href="operador_bit.php" target="" title="Operadores de bit">Oper. Bit</a></li>
+							<li><a href="omision_error.php" target="" title="Operador de omisión de errores">Omis.error</a></li>	
+						</ul>
+						<li><a href="">Includes</a>
+						<ul>
+							<li><a href="capitulo_3_tema_23.php" target="" title="inclusión de programas sencillos">Inclusión sencilla</a>
+							</li>
+							<li><a href="capitulo_3_tema_24.php" target="" title="inclusión de programas factoriales">Inclusión rutinas</a>
+								<li><a href="capitulo_3_tema_26.php" target="" title="inclusión de programas factoriales">Inclusión múltiple derutinas</a>
+								</li>
+							</li>
+							<li><a href="capitulo_3_tema_25.php" target="" title="inclusión de programas factoriales">Inclusión múltiple derutinas</a>
+							</li>
+							<li><a href="capitulo_3_tema_27.php" target="" title="inclusión de programas con return">Inclusión y retorno de valores</a>
+							</li>
+						</ul>
+						<li><a href="">Cadenas</a>
+							<ul>
+								<li><a href="Capitulo_4_tema_0.php" target="" title="Comillas dobles y simples">Delimitación de cadenas</a>
+								</li>
+							</li>
+							<li><a href="capitulo_4_tema_3.php" target="" title="Búsqueda de subcadenas y caracteres">Subcadenas</a>
+								<ul>
+									 <li><a href="capitulo_4_tema_3.php" target="" title="Búsqueda de subcadenas y caracteres">strchr,strrchr</a></li>
+									<li><a href="capitulo_4_tema_4.php" target="" title="Búsqueda de subcadenas y caracteres. No diferencia mayúsculas y minúsculas">strch</a></li>
+									<li><a href="capitulo_4_tema_5.php" target="" title="Búsqueda de la posición en la subcadena">strpos,strspos</a></li>									
+								</ul>
+							</li>
+							<li><a href="capitulo_4_tema_8.php" target="" title="Comparación de cadenas ">Comparación strncmp</a>
+							</li><li><a href="" >Operar subcadenas</a>
+							<ul>
+								<li><a href="capitulo_4_tema_10.php" target="" title="Devuelve subcad">substr</a></li>
+								<li><a href="capitulo_4_tema_11.php" target="" title="Reemplaza subcad">substr_replace</a></li>
+								<li><a href="capitulo_4_tema_14" target="" title="Reemplaza patrón">strtr_replace</a></li>
+								<li><a href="capitulo_4_tema_15" target="" title="cuenta subcad">substr_count</a></li>
+							</ul>
+						</li>
+						<li><a href="">Limpieza/relleno de cadenas</a>
+							<ul>
+								<li><a href="capitulo_4_tema_16.php" target="" title="Elimina espacios vacíos de una cadena">chop,trim</a></li>
+								<li><a href="capitulo_4_tema_17.php" target="" title="Relleno de cadenas">str_pad</a></li>
+								<li><a href="capitulo_4_tema_18.php" target="" title="Conversión entre mayúsculas y minúsculas">strtolower</a></li>
+							</ul>
+						</li>
+						<li><a href="">División de cadenas</a>
+							<ul>
+								<li><a href="capitulo_4_tema_20.php" target="" title="Desintegra una cadena en partes">explode</a></li>
+								<li><a href="capitulo_4_tema_21.php" target="" title="Integra partes de cadenas en una" >implode</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="">Arreglos</a>
+					<ul>
+						<li><a href="capitulo_5_tema_1" target="" title="Arreglos escalares">Escalares</a>
+							<li><a href="capitulo_5_tema_2"target="" title="Arreglos asociativo y constructor">Asociativo</a></li>
+							<li><a href="capitulo_5_tema_4" target="" title="Recorrido de un arreglo">Recorrido</a></li>
+							<li><a href="capitulo_5_tema_6" target="" title="Arreglos multidimensión">Multidimensión</a></li>
+							<li><a href="capitulo_5_tema_8" target="" title ="Orden ascendente y descendente de un arreglo">Asc/Des</a></li>
+							<li><a href="capitulo_5_tema_9" target="" title="Ordenado por clave y valor">ordenar</a></li>
+						</li>
+					</ul>
+					<li><a href="">Funciones</a>
+						<ul>
+							<li><a href="capitulo_6_tema_1.php" target="" title= "Paso de parámetros a la función" >Pasar parámetros</a></li>
+							<li><a href="capitulo_6_tema_2.php" target="" title= "Pasar una lista de parámetros a la función">Pasar lista</a></li>
+							<li><a href="capitulo_6_tema_3.php" target="" title= "Parámteros por valor, por referencia, por defecto">Formas de parámetros</a></li>
+							<li><a href="capitulo_6_tema_4.php" target="" title= "Devolución de valores desde una función">return</a></li>
+							<li><a href="capitulo_6_tema_5.php" target="" title= "Funciones con número variable de parámetros">variabilidad de parámetros</a></li>
+							<li><a href="capitulo_6_tema_6.php" target="" title= "Funciones tipo  variables">Funciones variables</a></li>
+							<li><a href="capitulo_6_tema_7.php" target="" title= "Compara iteración y recursividad">Funciones recursivas</a></li>
+						</ul>
+						<li><a href="">Formularios</a>
+							<ul>
+								<li><a href="formulario_simple.php" target="" title="Formulario simple con GET">GET</a>
+									<li><a href="formulario_simple_2.php"target="" title="Formulario simple con POST">POST</a></li>
+									<li><a href="formulario_avan_2.php" target="" title="Formulario avanzado con POST">POST/avanz</a></li>
+									<li><a href="capitulo_9_tema_2.php" target="" title="Decidir en chek box">chek box</a></li>
+									<li><a href="validacion_formulario.php" target="" title="Validación con Java script">Validación</a></li>
+									<li><a href="validar_formulario_avanzado.php" target="" title="Validación con Java Script">Validación</a></li>
+									<li><a href="validar_formulario_avanzado_2.php" target="" title="Evitar envío repetido">Contener</a></li>
+									<li><a href="">Cookies/session</a>
+										<ul>
+											<li><a href="http:/CURSO_CET/curso_php_avanzado/php/scraping/envio_automatico_2.php" target="" title="Envío automático de formulario">Envío autom. form.</a></li>
+											<li><a href="http:/CURSO_CET/curso_php_avanzado/php/scraping/envio_automatico_3.php" target="" title="Proceso Scraping I">Scraping con Cookies</a></li>
+										</ul>
+									</li>
+
+								</li>
+							</ul>
+						</li>
+						<li><a href="">PHP y Mysql</a>
+							<ul>
+								<li><a href="Mysql.pdf" target="" title="Tutorial con sentencias Mysql">Tutorial Mysql</a></li>
+								<li><a href="Mysql2.docx" target="" title="Resumen instrucciones">Sentencias Mysql</a></li>
+								<li><a href="insertar_registro_mysql_1.php" target="" title="Insertar un registro en la base de datos Mysql">Insertar un registro</a></li>
+								<li><a href="actualiza_registro_mysql.php" target="" title="Modificar un registro en la base de datos Mysql">Modificar un registro</a></li>
+								<li><a href="borra_registros_mysql.php" target="" title="Borrar un registro en la base de datos Mysql">Borrar un registro</a></li>
+								<li><a href="mostrar_registros_mysql.php" target="" title="Realizar un reporte de base de datos Mysql">Realizar un reporte</a></li>
+								<li><a href="mostrar_registros_mysql_2.php" target="" title="Realizar un reporte de base de datos Mysql">Realizar un reporte</a></li>
+							</ul>
+						</li>
+								<li><a href="">Proyectos Cursos</a>
+							<ul>
+								<li><a href="Formulario_ejercio.php" target="" title="Ejercicio de matriz por columnas">Matriz_columnas</a></li>
+								<li><a href="Formulario_ejercio_v2.php" target="" title="Ejercicio de matriz por filas">Matriz_filas</a></li>
+								<li><a href="" target="_new" title="Sin contenido">*******</a></li>
+								<li><a href="" target="_new" title="Sin contenido">*******</a></li>
+								<li><a href="" target="_new" title="Sin contenido">*******</a></li>
+								<li><a href="" target="_new" title="Sin contenido">*******</a></li>
+								<li><a href="" target="_new" title="Sin contenido">*******</a></li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+			</center>
+		</body>
+		</html>

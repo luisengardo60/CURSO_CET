@@ -1,0 +1,25 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Algoritmos</title>
+<center><h2><em><strong><font color="blue">Algoritmo Mezcla</font></strong></em></h2></center>
+<body>
+	<p><h3><em><strong><font color="red">Introducción</font></strong></em></h3>
+<p>Éste algoritmo se basa en el principio de divide y conquistarás. Resulta más fácil ordenar listas pequeñas que una grande, con lo cual irá descomponiendo la lista en dos partes y ordenando esas partes.</p>
+<p>Para ésto utiliza la recursividad.</p>
+<p>Dada una lista, elegir uno de sus elementos, que llamamos pivot</p>
+<p>Dividir la lista en dos sublistas:</p>
+<p>una con los elementos "menores"</p>
+<p>otra con los elementos "mayores"</p>
+<p>Ordenar recursívamente ambas sublistas</p>
+<p>Armar la lista resultado como: menoresOrdenados + pivot + mayoresOrdenados</p>
+<p>Vamos a ver más adelante que la elección del pivot y el orden con el que venga ya de entrada la linea podrá afectar la eficiencia del algoritmo. En principio el algoritmo no especifica cómo elegir el pivot. </p>
+<p align="center"><img src="ordenar_1.png" align="middle" width="1000" height="700"> </p>
+<p align="center"><img src="ordenar_2.png" align="middle" width="1000" height="700"> </p>
+<p>
+Análisis del Algoritmo
+El mergeSort tiene tiempo de ejecución dado por el orden O(n log(n))
+Es decir que es bastante más rápido que el Algoritmo Bubbe Sort</p> 
+</body>
+</html>

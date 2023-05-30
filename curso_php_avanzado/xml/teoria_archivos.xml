@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Edit_Mensaje SYSTEM "Edit_Mensaje.dtd">
+<archivos>
+	<lectura>
+		El código PHP tipo función readfile() lee y permite obtener una salida de un archivo, a la vez que  se obtiene el total de bytes en la estructura.
+	</lectura>
+</archivos>

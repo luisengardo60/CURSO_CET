@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Edit_Mensaje SYSTEM "Edit_Mensaje.dtd">
+<mysql>
+<use>
+mysql> USE menagerie 
+Database changed
+</use>
+<show>
+mysql> SHOW TABLES; 
+Empty set (0.00 sec)
+</show>
+<create>
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),    -> species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+</create>
+<describe_table>
+mysql> DESCRIBE pet;
+</describe_table>
+<load_data>
+
+mysql> LOAD DATA LOCAL INFILE '/path/pet.txt' INTO TABLE pet;
+</load_data>
+
+Opcionalmente puede especificar en la sentencia LOAD DATA los caracteres que actuarán como separador de campo y fin de línea, pero los valores por defecto son tabulación y nueva línea. Estos son suficientes para que la sentencia lea correctamente el fichero pet.txt
+<insert>
+mysql> INSERT INTO pet    -> VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL)
+</insert>
+
+ Extraer información de una tabla
+ <select>
+La forma más simple de SELECT recupera todo lo que hay en la tabla:
+mysql> SELECT * FROM pet; 
+Esta forma de SELECT es útil si se quiere revisar la tabla completa, por ejemplo, despues de haberla cargado con un conjunto de datos inicial. Por ejemplo, puede ocurrir que la fecha de nacimiento de Bowser no parezca correcta. Consultando los papeles de pedigri, se descubre que el año correcto de nacimiento es 1989, no 1979.
+
+Existen al menos dos formas de solucionarlo:
+• Editando el fichero pet.txt para corregir el error, vaciando la tabla y volviendola a llenar con los datos. Para esto se usan las sentencias DELETE y LOAD DATA:
+</select>
+<delete>
+mysql> DELETE FROM pet; mysql> LOAD DATA LOCAL INFILE 'pet.txt' INTO TABLE pet;
+No obstante, si opta por esto, deberá volver a cargar el registro de Puffball.
+• Corrigiendo únicamente el registro erróneo. Para esto se usa la sentencia UPDATE:
+mysql> UPDATE pet SET birth = '1989-08-31' WHERE name = 'Bowser';
+</delete>
+
+<select>
+Seleccionar registros específicos
+mysql> SELECT * FROM pet WHERE name = 'Bowser';
+mysql> SELECT * FROM pet WHERE species = 'dog' AND sex = 'f';
+mysql> SELECT * FROM pet WHERE species = 'snake' OR species = 'bird';
+mysql> SELECT * FROM pet WHERE (species = 'cat' AND sex = 'm')    -> OR (species = 'dog' AND sex = 'f');
+</select>
+<select>
+Seleccionar columnas concretas
+mysql> SELECT name, birth FROM pet;
+mysql> SELECT owner FROM pet
+mysql> SELECT DISTINCT owner FROM pet
+mysql> SELECT name, species, birth FROM pet    -> WHERE species = 'dog' OR species = 'cat'
+</select>
+<select>
+ Ordenar registros
+mysql> SELECT name, birth FROM pet ORDER BY birth;
+mysql> SELECT name, birth FROM pet ORDER BY birth DESC; 
+mysql> SELECT name, species, birth FROM pet    -> ORDER BY species, birth DESC; 
+Cálculos sobre fechas
+</select>
+</mysql>
+
+

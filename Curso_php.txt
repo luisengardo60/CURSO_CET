@@ -1,0 +1,34 @@
+Operadores aritmeticos:
+
++=
+-=
+*=
+/=
+porcentaje= toma el resto de una operacion de division
+.=
+
+
+$a + = 4a$6  = $a + = $6
+
+$a * = $6
+
+sb = "hola"
+
+$b = juan
+
+
+
+$a = 1
+
+echo $a++;
+
+echo ++$a  incrementa uno imprimeria 2
+
+Bit
+& 
+----------------------------------------------------------------------------------------
+capitulo_5_tema_1 al 9 php
+capitulo_3
+capilulo_4
+
+capitulo_6_tema_6

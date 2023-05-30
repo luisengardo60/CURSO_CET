@@ -1,0 +1,17 @@
+AJAX = Asynchronous JavaScript and XML
+CSS = Cascading Style Sheets
+HTML = Hyper Text Markup Language
+PHP = PHP Hypertext Preprocessor
+SQL = Structured Query Language
+SVG = Scalable Vector Graphics
+XML = EXtensible Markup LanguageJS = Java Script
+JS = Java Script
+VS = Visual Basic
+JS = Java Script
+VS = Visual Basic
+JS = Java Script
+VS = Visual Basic
+JS = Java Script
+VS = Visual Basic
+JS = Java Script
+VS = Visual Basic

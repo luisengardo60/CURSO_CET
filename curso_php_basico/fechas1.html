@@ -1,0 +1,30 @@
+<HTML>
+ <HEAD>
+   <TITLE>Funciones de Fecha y Hora</TITLE>
+   <STYLE>
+     TABLE {font-family:Verdana;font:12px;}
+     INPUT {text-align:right;}
+   </STYLE>
+ </HEAD>
+ <BODY>
+   <CENTER>
+     <H2>Funciones de Fecha y Hora</H2><BR><HR>
+     <FORM METHOD="POST" ACTION="fechas1.php">
+         <TABLE CELLPADDING="0" CELLSPACING="0">
+           <TR BGCOLOR="YELLOW" ALIGN="CENTER"><TD>Dia</TD><TD>Mes</TD><TD>Año</TD></TR>
+           <TR>
+              <TD><INPUT TYPE="TEXT" NAME="dia" MAXLENGTH="2" SIZE="3"></TD>
+              <TD><INPUT TYPE="TEXT" NAME="mes" MAXLENGTH="2" SIZE="3"></TD>
+              <TD><INPUT TYPE="TEXT" NAME="anio" MAXLENGTH="4" SIZE="5"></TD>
+           </TR>
+         </TABLE><BR>
+         <INPUT TYPE="SUBMIT" VALUE="Obtener Calendario">
+     </FORM><HR>
+     <CODE>
+        <B>NOTA:</B>Cualquier dato no codificado 
+        <BR>se tomará como el valor 
+        <BR>correspondiente de la fecha actual
+     </CODE>
+   </CENTER>
+ </BODY>
+</HTML>

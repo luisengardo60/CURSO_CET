@@ -1,0 +1,70 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Grafos-Búsqueda</title>
+
+<center><h2><em><strong><font color="blue">Grafos y Algoritmos de búsqueda</font></strong></em></h2></center>
+
+<body>
+	
+
+	<p><h3><em><strong><font color="red">Introducción</font></strong></em></h3>
+<p>En las páginas previas de Árboles y Árboles Binarios ya estuvimos trabajando con algoritmos de búsqueda. Vimos profundidad primero y ancho primero para buscar elementos dentro de una estructura de árbol. En esta página vamos a entrar en más detalles sobre los algoritmos de búsqueda.</p>
+
+<p><h3><em><strong><font color="red">Grafos</font></strong></em></h3></p>
+<p>Un grafo es una estructura que tiene nodos interrelacionados. En los nodos generalmente se guarda información. Los árboles que ya vimos son en efecto un tipo particular de grafos en los cuales no se producen ciclos. Por ejemplo, un grafo que conecta distintas ciudades. En este caso cara arista representa una ruta entre ambas ciudades. La ruta la consideramos como "bidireccional", pero hay variantes de grafos en la que la relación es unidireccional (a esos grafos se los denomina dígrafo). </p>
+
+<p align="center"><img src="grafos_1.png" align="middle" width="500" height="400"> </p>
+
+<p><h3><em><strong><font color="red">Recorridos</font></strong></em></h3></p>
+<p>
+Los conceptos de profundidad primero y ancho primero también son aplicables a los grafos, pero necesitamos hacer cierta modificación para eliminar los ciclos. La manera de detectar ciclos es tener cierta memoria sobre los nodos que ya hemos visitado, para evitar recorrer el camino que ya recorrimos.</p>
+<p><h3><em><strong><font color="red">Profundidad Primero</font></strong></em></h3></p>
+<p>Modificamos el algoritmo que teníamos para árboles, para utiizar una semilla que nos permite saber si un nodo fue visitado o no </p> 
+<p align="center"><img src="grafos_2.png" align="middle" width="500" height="400"> </p>
+
+
+<p><h3><em><strong><font color="red">Ancho Primero</font></strong></em></h3></p>
+
+De manera similar, podemos modificar el algoritmo de ancho primero para detectar los ciclos
+<p align="center"><img src="grafos_3.png" align="middle" width="500" height="400"> </p>
+
+<p><h3><em><strong><font color="red">Caminos y Pesos</font></strong></em></h3></p>
+<p>Un camino es una sucesión de nodos que se puede recorrer siguiendo las aristas de los grafos.  Por ejemplo, si quiero ir de Buenos Aires a Villa María puedo ir de por 3 caminos:</p>
+<p>Camino 1: Buenos Aires, San Pedro, Rosario, Villa María</p>)
+<p>Camino 2: Buenos Aires, San Luis, Villa María</p>
+<p>Camino 3: Buenos Aires, Bahia Blanca, San Luis, Villa María.</p>
+<p>Si contamos la cantidad de pasos, el primer camino tiene 3 pasos, el segundo tiene 2 pasos y el tercero 3 pasos. </p>
+<p>Sin embargo, el criterio de contar pasos no parece ser útil si quiero conocer el camino mínimo para viajar de Buenos Aires a Villa María. Para resolver ese problema nos falta agregar la cantidad de km que hay entre cada ciudad. Este valor, que es la distancia en km en nuestro caso concreto, lo vamos a generalizar con el nombre de peso para cualquier grafo y representa el costo de transicionar por una arista.
+</p>
+<p align="center"><img src="grafos_4.png" align="middle" width="500" height="400"> </p>
+<p><h3><em><strong><font color="red">Cálculo del costo del camino mínimo (Algoritmo de Dijkstra)</font></strong></em></h3></p>
+<p>El algoritmo de Dijkstra es utilizado para calcular los costos mínimos de los caminos. Podemos encontrar una descripción detallada aqui.y un tutorial en forma de video aqui</p>
+<p>La idea del algoritmo es ir recorriendo el grafo etiquetando cada nodo. La etiqueta de un nodo esta compuesto por la distancia acumulada hasta ese nodo y el nodo anterior.</p>
+    <p>Etiqueta(nodo) = (Peso_Acumulado, NodoAnterior)<(p>)
+<p>El algoritmo genera la etiqueta del primer elemento usando 0 como acumulado y None como nodo anterior. y luego procede recursivamente:</p>
+<p>Elije el nodo etiquetado con menor valor y que no esté marcado como "procesado". 
+Se generan las etiquetas de los nodos vecinos.</p>
+<p>Si algun nodo vecino ya estaba etiquetado, se queda con la etiqueta que tenga menor valor acumulado y descarta la otra.</p>
+<p>Se marca el nodo actual como "procesado"</p>
+<p>El algoritmo termina cuando el nodo destino es marcado como permanente. El valor del acumulado en la etiqueta es el costo del camino, y siguiendo el valor anterior se puede obtener el camino.</p>
+
+<p>En el siguiente grafo  vamos a calcular el camino entre E y A (es distinto al ejemplo del tutorial).
+	<p align="center"><img src="grafos_8.png" align="middle" width="500" height="400"> </p>
+Analicemos paso a paso con la misma convención que usamos en el ejemplo anterior:</p>
+<p>En rojo marcamos los nodos ya procesados</p>
+<p>En negrita se marca el menor acumulado que determina el nodo a procesar</p>
+<p>En azul se marcan los cambios con respecto a la iteración anterior.</p>
+<p align="center"><img src="grafos_5.png" align="middle" width="500" height="400"> </p>
+<p align="center"><img src="grafos_6.png" align="middle" width="500" height="400"> </p>
+<p align="center"><img src="grafos_7.png" align="middle" width="500" height="400"> </p>
+
+
+
+
+
+
+
+	</body>
+	</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Recursividad</title>
+
+<center><h2><em><strong><font color="blue">Recursividad</font></strong></em></h2></center>
+
+<body>
+	<p align="center"><img src="recursividad.png" align="left" width="180" height="120"> </p>
+
+	<p><h3><em><strong><font color="red">Introducción</font></strong></em></h3>
+<p>La recursividad es una técnica de programación que tiene su fundamento en la inducción matemática. 
+Para que un problema pueda ser resuelto en forma recursiva, debe poder expresarse a partir de
+un caso base: es un caso para el cual la resolución es inmediata.
+y de una regla que se utiliza a si misma (la llamada recursiva): es decir poder expresar la solución para este caso en base al mismo problema</p>
+
+<p></h3><em><strong><font color="red">Factorial</font></strong></em></h3>
+<p>El ejemplo típico para explicar recursividad es el cálculo del factorial de un número (el operador matemático utilizado es "!")</p>.
+<p>El factorial de un número N es el producto de todos los números enteros desde 1 hasta N.
+Ejemplo:</p>
+<p>!5 = 1 * 2 * 3 * 4 * 5</p>
+<p>Lo interesante acá es ver que factorial de 4 es:</p>
+<p>!4 = 1 * 2 * 3 * 4</p>
+<p>Como vemos !5 contiene en su solución a la solución de !4. Agregándole la multiplicación por el 5. Y así sucederá para cualquier N.</p>
+<p>!5 = 1 * 2 * 3 * 4 * 5</p>
+<p>!5 =        !4        * 5</p>    
+<p>Entonces, ahí encontramos una manera de expresar la solución en forma recursiva. Podemos plantear los casos generales para todo N:</p>
+<p>Caso base: 0! = 1</p>
+<p>Regla recursiva: n! = n * (n-1)!</p>
+<p>Esto significa que si quiero calcular el factorial de 5, se debe ir resolviendo los siguientes pasos:</p>
+    <p>5!                            Lo solicitado</p>
+   <p> 5 * 4!                       al aplicar la regla recursiva</p>
+    <p>5 * 4 * 3!                  al aplicar la regla recursiva</p>
+    <p>5 * 4 * 3 * 2!             al aplicar la regla recursiva</p>
+    <p>5 * 4 * 3 * 2* 1!         al aplicar la regla recursiva</p>
+    <p>5 * 4 * 3 * 2* 1 * 0!    al aplicar la regla recursiva</p>
+    <p>5 * 4 * 3* 2* * 1 * 1    al aplicar el caso base </p>
+   <p> 120                          el resultado</p>
+<p>De esta manera se ve como la regla recursiva se va aplicando hasta que el caso base pone fin a las llamadas recursivas. Es importante entonces definir el caso base ya que si no el cálculo no se puede resolver (quedaría calculando por siempre)</p>
+
+<p><h3><font color="red"> <em><strong>Ejemplos con vectores y matrices. Máximo, Mínimo, promedio y desviación estándar</string></em></h3></font></p>
+
+
+	</body>
+	</html>

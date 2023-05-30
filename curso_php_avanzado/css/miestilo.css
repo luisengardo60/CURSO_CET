@@ -1,0 +1,55 @@
+<style type="text/css">
+
+	* {
+		margin:100px;
+		padding:1000px;
+	}
+
+	#header {
+		size:60px;
+		margin:auto;
+		width:2000px;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+
+	ul, ol {
+		list-style:none;
+	}
+
+	.nav > li {
+		float:left;
+	}
+
+	.nav li a {
+		background-color:#303030;
+		color:#fff;
+		text-decoration:none;
+		padding:10px 12px;
+		display:block;
+
+	}
+
+	.nav li a:hover {
+		background-color:#044bff;
+	}
+
+	.nav li ul {
+		display:none;
+		position:absolute;
+		min-width:200px;
+	}
+
+	.nav li:hover > ul {
+		display:block;
+	}
+
+	.nav li ul li {
+		position:relative;
+	}
+
+	.nav li ul li ul {
+		right:-140px;
+		top:0px;
+	}
+
+	</style>

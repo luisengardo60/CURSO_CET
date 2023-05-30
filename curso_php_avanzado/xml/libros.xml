@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<libreria sitio="Sabana Grande">
+<libro categoria="COOKING">
+  <titulo >Everyday Italian</titulo> 
+  <autor>Giada De Laurentiis</autor> 
+  <fecha>2005</fecha> 
+  <precio>30.00</precio> 
+</libro>
+<libro categoria="CHILDREN">
+  <titulo >Harry Potter</titulo> 
+  <autor>J K. Rowling</autor> 
+  <fecha>2005</fecha> 
+  <precio>29.99</precio> 
+</libro>
+<libro categoria="WEB">
+  <titulo >Learning XML</titulo> 
+  <autor>Erik T. Ray</autor> 
+  <fecha>2003</fecha> 
+  <precio>39.95</precio> 
+</libro>
+</libreria>

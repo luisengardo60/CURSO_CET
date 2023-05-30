@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Edit_Mensaje SYSTEM "Edit_Mensaje.dtd">
+<teoria>
+<Teoria_de_archivos>
+	<tema>
+	<manejo_archivos>
+		El código PHP tipo función readfile() lee y permite obtener una salida de un archivo, a la vez que  se obtiene el total de bytes en la estructura.
+	</manejo_archivos>
+</tema>
+	<tema>
+		<apertura>
+		El método fopen() tiene más opciones que readfile(). Un primer parámetro indica el nombre del archivo, mientras el segundo indica el modo de apertura del archivo. A continuación, tabla explicativa de parámetros:
+
+Modes      Description
+r         Open a file for read only. File pointer starts at the beginning of the file
+
+w         Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file
+
+a         Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
+
+x         Creates a new file for write only. Returns FALSE and an error if file already exists
+
+r+        Open a file for read/write. File pointer starts at the beginning of the file
+
+w+        Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file 
+
+a+        Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
+
+x+       Creates a new file for read/write. Returns FALSE and an error if file already exists
+
+</apertura>
+</tema>
+<tema>
+<lectura>
+	La función fread(), lee un archivo abierto. El segundo parámetro indica la cantidad de bytes a leer.
+	fread($myfile,filesize("webdictionary.txt"));
+	</lectura>
+</tema>
+<tema>
+	<lectura>
+		la función fgets() extrae un solo registro y se ubica en la posición siguiente. Es necesario detectar el fin de archivo, por lo que se usa la función feof()
+	</lectura>
+</tema>
+<tema>
+	<lectura>
+		La función fgetc() extrae caracter por caracter del archivo. Es necesaria la condición feof() para leer todo el archivo.
+	</lectura>
+</tema>
+<tema>
+	<crear_archivo>
+		La creación de un archivo, se hace con la misma función con que se abre un archivo: fopen(). Luego, podemos decidir si agregamos o reiniciamos la carga de datos, con el parámtero w o a de append.
+	</crear_archivo>
+</tema>
+</Teoria_de_archivos>
+
+<Filtros>
+
+<tema>
+	<filtros>
+		Los filtros son utilizados para validar entradas externas. Ello tiene el objetivo de asegurar que la aplicación desarrollada trabaje con los datos correctos, que eviten un malfuncionamiento del aplicativo.
+	</filtros>
+</tema>
+
+	<tema>
+	<filtros>
+		El siguiente es un ejemplo de filtro para remover todas las etiquetas:
+	$newstr = filter_var($str, FILTER_SANITIZE_STRING)
+	</filtros>
+</tema>
+
+<tema>
+	<filtros>
+		El siguiente filtro da una condición cierta o falsa, referente  a si la variable es integer o no.
+	filter_var($int, FILTER_VALIDATE_INT)
+	</filtros>
+</tema>
+
+	<tema>
+	<filtros>
+	La siguiente condición es un filtro más avanzado, y verifica si el valor está en un rango:
+	(filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false).
+
+	Así, se puede vwerificar IPv4, IPv6, URL e email, como ejemplos de aplicación de los filtros, para validar entradas externas, que pudiesen generar errores en los aplicativos, de no considerarse.
+	</filtros>	
+</tema>
+
+<tema>
+	<manejo_error_1>
+		Parameter
+Description
+error_level
+Required. Specifies the error report level for the user-defined error. Must be a value number. See table below for possible error report levels
+error_message
+Required. Specifies the error message for the user-defined error
+error_file
+Optional. Specifies the filename in which the error occurred
+error_line
+Optional. Specifies the line number in which the error occurred
+error_context
+Optional. Specifies an array containing every variable, and their values, in use when the error occurred
+</manejo_error_1>
+</tema>
+
+<tema>
+	<manejo_error_2>
+Value
+Constant
+Description
+2
+E_WARNING
+Non-fatal run-time errors. Execution of the script is not halted
+8
+E_NOTICE
+Run-time notices. The script found something that might be an error, but could also happen when running a script normally
+256
+E_USER_ERROR
+Fatal user-generated error. This is like an E_ERROR set by the programmer using the PHP function trigger_error()
+512
+E_USER_WARNING
+Non-fatal user-generated warning. This is like an E_WARNING set by the programmer using the PHP function trigger_error()
+1024
+E_USER_NOTICE
+User-generated notice. This is like an E_NOTICE set by the programmer using the PHP function trigger_error()
+4096
+E_RECOVERABLE_ERROR
+Catchable fatal error. This is like an E_ERROR but can be caught by a user defined handle (see also set_error_handler())
+8191
+E_ALL
+All errors and warnings (E_STRICT became a part of E_ALL in PHP 5.4)
+	</manejo_error_2>
+</tema>
+
+<tema>
+	<excepciones>
+		What is an Exception
+With PHP 5 came a new object oriented way of dealing with errors.
+Exception handling is used to change the normal flow of the code execution if a specified error (exceptional) condition occurs. This condition is called an exception.
+
+This is what normally happens when an exception is triggered:
+The current code state is saved
+The code execution will switch to a predefined (custom) exception handler function
+Depending on the situation, the handler may then resume the execution from the saved code state, terminate the script execution or continue the script from a different location in the code
+We will show different error handling methods:
+Basic use of Exceptions
+Creating a custom exception handler
+Multiple exceptions
+Re-throwing an exception
+Setting a top level exception handler
+Note: Exceptions should only be used with error conditions, and should not be used to jump to another place in the code at a specified point.
+	</excepciones>
+	</tema>
+
+	<tema>
+	<excepciones>
+		Try, throw and catch
+To avoid the error from the example above, we need to create the proper code to handle an exception. 
+Proper exception code should include:
+Try - A function using an exception should be in a "try" block. If the exception does not trigger, the code will continue as normal. However if the exception triggers, an exception is "thrown"
+Throw - This is how you trigger an exception. Each "throw" must have at least one "catch"
+Catch - A "catch" block retrieves an exception and creates an object containing the exception information
+	</excepciones>
+	</tema>
+
+	<tema>
+	<excepciones>
+		Creating a Custom Exception Class
+To create a custom exception handler you must create a special class with functions that can be called when an exception occurs in PHP. The class must be an extension of the exception class.
+The custom exception class inherits the properties from PHP's exception class and you can add custom functions to it.
+	</excepciones>
+	</tema>
+
+</Filtros>
+
+
+
+
+<Comandos_Mysql>
+
+	<tema>
+<use>
+mysql> USE menagerie 
+Database changed
+</use>
+</tema>
+
+<tema>
+<show>
+mysql> SHOW TABLES; 
+Empty set (0.00 sec)
+</show>
+</tema>
+
+<tema>
+<create>
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),    -> species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+</create>
+</tema>
+
+<tema>
+<describe_table>
+mysql> DESCRIBE pet;
+</describe_table>
+</tema>
+
+<tema>
+<load_data>
+
+mysql> LOAD DATA LOCAL INFILE '/path/pet.txt' INTO TABLE pet;
+
+
+Opcionalmente puede especificar en la sentencia LOAD DATA los caracteres que actuarán como separador de campo y fin de línea, pero los valores por defecto son tabulación y nueva línea. Estos son suficientes para que la sentencia lea correctamente el fichero pet.txt
+</load_data>
+</tema>
+
+<tema>
+<insert>
+mysql> INSERT INTO pet    -> VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL)
+</insert>
+</tema>
+
+ <tema>
+ <select>
+ 	Extraer información de una tabla
+La forma más simple de SELECT recupera todo lo que hay en la tabla:
+mysql> SELECT * FROM pet; 
+Esta forma de SELECT es útil si se quiere revisar la tabla completa, por ejemplo, despues de haberla cargado con un conjunto de datos inicial. Por ejemplo, puede ocurrir que la fecha de nacimiento de Bowser no parezca correcta. Consultando los papeles de pedigri, se descubre que el año correcto de nacimiento es 1989, no 1979.
+
+Existen al menos dos formas de solucionarlo:
+• Editando el fichero pet.txt para corregir el error, vaciando la tabla y volviendola a llenar con los datos. Para esto se usan las sentencias DELETE y LOAD DATA:
+</select>
+</tema>
+
+<tema>
+<delete>
+mysql> DELETE FROM pet; mysql> LOAD DATA LOCAL INFILE 'pet.txt' INTO TABLE pet;
+No obstante, si opta por esto, deberá volver a cargar el registro de Puffball.
+• Corrigiendo únicamente el registro erróneo. Para esto se usa la sentencia UPDATE:
+mysql> UPDATE pet SET birth = '1989-08-31' WHERE name = 'Bowser';
+</delete>
+</tema>
+
+<tema>
+<select>
+Seleccionar registros específicos
+mysql> SELECT * FROM pet WHERE name = 'Bowser';
+mysql> SELECT * FROM pet WHERE species = 'dog' AND sex = 'f';
+mysql> SELECT * FROM pet WHERE species = 'snake' OR species = 'bird';
+mysql> SELECT * FROM pet WHERE (species = 'cat' AND sex = 'm')    -> OR (species = 'dog' AND sex = 'f');
+</select>
+</tema>
+
+<tema>
+<select>
+Seleccionar columnas concretas
+mysql> SELECT name, birth FROM pet;
+mysql> SELECT owner FROM pet
+mysql> SELECT DISTINCT owner FROM pet
+mysql> SELECT name, species, birth FROM pet    -> WHERE species = 'dog' OR species = 'cat'
+</select>
+</tema>
+
+<tema>
+<select>
+ Ordenar registros
+mysql> SELECT name, birth FROM pet ORDER BY birth;
+mysql> SELECT name, birth FROM pet ORDER BY birth DESC; 
+mysql> SELECT name, species, birth FROM pet    -> ORDER BY species, birth DESC; 
+Cálculos sobre fechas
+</select>
+</tema>
+
+<tema>
+<primary_key>
+	CREATE TABLE users(
+   user_id INT AUTO_INCREMENT PRIMARY KEY,
+   username VARCHAR(40),
+   password VARCHAR(255),
+   email VARCHAR(255
+	</primary_key>
+</tema>
+
+<tema>
+	<primary_key>
+		CREATE TABLE roles(
+   role_id INT AUTO_INCREMENT,
+   role_name VARCHAR(50),
+   PRIMARY KEY(role_id)
+);
+
+		</primary_key>
+
+	</tema>
+	<tema>
+			<primary_key>
+				ALTER TABLE table_name
+ADD PRIMARY KEY(primary_key_column);
+			</primary_key>
+</tema>
+
+</Comandos_Mysql>
+
+<Teoria_POO>
+	<tema>
+		<introduccion>
+			A partir de PHP 5, el modelo de objetos ha sido reescrito para tener en cuenta un mejor rendimiento y mayor funcionalidad. Este fue un cambio importante a partir de PHP 4. PHP 5 tiene un modelo de objetos completo. 
+Entre las características de PHP 5 están la inclusión de la visibilidad, clases y métodos abstractos y finales, métodos mágicos adicionales, interfaces, clonación y determinación de tipos. 
+PHP trata los objetos de la misma manera que las referencias o manejadores, lo que significa que cada variable contiene una referencia a un objeto en lugar de una copia de todo el objeto. Véanse los Objetos y referencias 
+			</introduccion>
+	</tema>
+	<tema>
+		<var_global>
+			 Al declarar $a y $b globales dentro de la función, todas las referencias a tales variables se referirán a la versión global. No hay límite al número de variables globales que se pueden manipular dentro de una función. 
+Un segundo método para acceder a las variables desde un ámbito global es usando el array $GLOBALS.
+		</var_global>
+	</tema>
+	<tema>
+		<var_global>
+			 El array $GLOBALS es un array asociativo con el nombre de la variable global como clave y los contenidos de dicha variable como el valor del elemento del array. $GLOBALS existe en cualquier ámbito, esto ocurre ya que $GLOBALS es una superglobal. 
+		</var_global>
+	</tema>
+	<tema>
+		<var_estatic>
+			 Para hacer una función útil para contar, que no pierda la pista del valor actual del conteo, la variable $a debe declararse como estática
+		</var_estatic>
+	</tema>
+<tema>
+	<lo_basico_class>
+		class 
+La definición básica de una clase comienza con la palabra reservada class, seguida de un nombre de clase, y continuando con un par de llaves que encierran las definiciones de las propiedades y métodos pertenecientes a dicha clase. 
+El nombre de clase puede ser cualquier etiqueta válida, siempre que no sea una palabra reservada de PHP. Un nombre válido de clase comienza con una letra o un guión bajo, seguido de una cantidad arbitraria de letras, números o guiones bajos
+	</lo_basico_class>
+</tema>
+
+<tema>
+	<lo_basico_this>
+		
+			La pseudovariable $this está disponible cuando un método es invocado dentro del contexto de un objeto. $this es una referencia al objeto invocador 
+
+	</lo_basico_this>
+	</tema>
+	<tema>
+		<propiedades>
+			Propiedades 
+Las variables pertenecientes a una clase se llaman "propiedades". También se les puede llamar usando otros términos como "atributos" o "campos", pero para los propósitos de esta referencia se va a utilizar "propiedades". Éstas se definen usando una de las palabras reservadas public, protected, o private, seguido de una declaración normal de variable. Esta declaración puede incluir una inicialización, pero esta inicialización debe ser un valor constante, es decir, debe poder ser evaluada durante la compilación y no depender de información generada durante la ejecución. 
+
+Dentro de los métodos de una clase, se puede acceder a las propiedades no estáticas utilizando -> (el operador de objeto): $this->propiedad (donde propiedad es el nombre de la propiedad). A las propiedades estáticas se puede acceder utilizando :: (doble dos puntos): self::$propiedad. Véase la palabra reservada 'static' para más información sobre la diferencia entre propiedades estáticas y no estáticas. 
+La pseudovariable $this está disponible dentro de cualquier método de clase cuando éste es invocado dentro del contexto de un objeto. $this es una referencia al objeto invocador (usualmente el objeto al cual pertenece el método, aunque puede que sea otro objeto si el método es llamado estáticamente desde el contexto de un objeto secundario). 
+
+
+		</propiedades>
+	</tema>
+	<tema>
+		<constantes_de_clases>
+			Es posible definir valores constantes en función de cada clase manteniéndola invariable. Las constantes se diferencian de las variables comunes en que no utilizan el símbolo $ al declararlas o emplearlas. La visibilidad predeterminada de las constantes de clase es public. 
+		</constantes_de_clases>
+	</tema>
+	<tema>
+		<clonacion>
+			Clonación de Objetos 
+No siempre se desea crear una copia de un objeto replicando todas sus propiedades completamente.Si se encuentra un nobre declarado con el nombre __clone,lo ejecutará nada más al realizarse la copia del objeto, ocasión que podemos aprovechar para hacer las modificaciones a las propiedades que necesitemos.
+		</clonacion>
+		</tema>
+		<tema>
+		<visibilidad>
+			Propiedades Públicas, Protegidas y Privadas 
+La visibilidad de una propiedad, un método o (a partir d PHP 7.1.0) una constante se puede definir anteponiendo a su declaración una de las palabras reservadas public, protected o private. A los miembros de clase declarados como 'public' se puede acceder desde donde sea; a los miembros declarados como 'protected', solo desde la misma clase o mediante clases heredadas. A los miembros declarados como 'private' únicamente se puede acceder desde la clase que los definió. 
+
+Las variables públicas y privadas se les puede redefinir en clases heredadas. Las privadas nunca se pueden redefinir o re-iniciar a otro valor desde las otras clases o clases heredadas.
+</visibilidad>
+		</tema>
+		<tema>
+			<acceso_miembros_de_un_objeto>
+				Los métodos __set() y  __get() se ejecutan cuando se detcta un set de propiedad o un echo a una propiedad, y lña misma no existe.  En la misma forma, el método __call se ejecuta cuando se desea acceder a un método de la clase, el cual no existe. Cuando se desea hacer un echo a un objeto, se jecuta la función __tooString  
+			</acceso_miembros_de_un_objeto>
+		</tema>
+		<tema>
+			<sobrecarga_de_metodos>
+				Con el método __call se puede hacer llamadas a dicho método. según el array que se transfiera se ejecutará un afunción u otra. 
+			</sobrecarga_de_metodos>
+			<tema>
+				<constructores>
+					PHP 5 permite a los desarrolladores declarar métodos constructores para las clases. Aquellas que tengan un método constructor lo invocarán en cada nuevo objeto creado, lo que lo hace idóneo para cualquier inicialización que el objeto pueda necesitar antes de ser usado.
+
+					Los constructores padres no son llamados implícitamente si la clase hija define un constructor. Para ejecutar un constructor padre, se requiere invocar a parent::__construct() desde el constructor hijo. Si el hijo no define un constructor, entonces se puede heredar de la clase madre como un método de clase normal (si no fue declarada como privada).  
+				</constructores>
+			</tema>
+		</tema>
+		<tema>
+			<destructores>
+		Destruct se ejecuta cuando se termina un método. Hasta que todas las referencias al mismo objeto no finalicen, no se ejecutará el Método Destruct
+			</destructores>
+		</tema>
+		<tema>
+			<atributos_y_metodos_estaticos>
+		Los atributos y métodos de clase, tabíen llamados estáticos son aquellos que pueden ejecutarse directamente desde la clase sin necesidad de crear un objeto
+			</atributos_y_metodos_estaticos>
+		</tema>
+		<tema>
+			<herencia>
+				Aspectos a considerar sobre las propiedades y métodos en la Herencia: Public: la propiedad o método podrá usarse en cualquier parte del script Private: la propiedad o método sólo podrá usarse en la clase a la que pertenece Protected: la propiedad o método se podrá usar por la clase a la que pertenece y por sus descendientes.  Final: la clase o método no puede ser sobreescrito en clases descendientes.  Abstract: la clase o método no puede ser usado directamente, ha de ser heredado primero para usarse   Primero es necesario saber qué es la herencia de clases. Una clase puede heredar los métodos y propiedades  de otra clase usando la palabra extends. No es posible extender a múltiples clases, sólo se puede heredar de una clase. Los métodos y propiedades heredados pueden ser sobreescritos declarándolos de nuevo con el mismo nombre que tienen en la clase padre:
+			</herencia>
+		</tema>
+		<tema>
+			<metodo_y_clase_final>
+				Un método declarado como final no podrá ser redefinido en ninguna clase derivada. Por ende, las clases declaradas como final no pueden ser heredadas.
+			</metodo_y_clase_final>
+		</tema>
+		<tema>
+			<interfaces>
+				Las interfaces de objetos permiten crear código con el cual especificar qué métodos deben ser implementados por una clase, sin tener que definir cómo estos métodos son manipulados. 
+Las interfaces se definen de la misma manera que una clase, aunque reemplazando la palabra reservada class por la palabra reservada interface y sin que ninguno de sus métodos tenga su contenido definido. 
+Todos los métodos declarados en una interfaz deben ser públicos, ya que ésta es la naturaleza de una interfaz. 
+
+Para implementar una interfaz, se utiliza el operador implements. Todos los métodos en una interfaz deben ser implementados dentro de la clase; el no cumplir con esta regla resultará en un error fatal. Las clases pueden implementar más de una interfaz si se deseara, separándolas cada una por una coma. 
+
+Las interfaces se pueden extender al igual que las clases utilizando el operador extends. 
+
+La clase que implemente una interfaz debe utilizar exactamente las mismas estructuras de métodos que fueron definidos en la interfaz. De no cumplir con esta regla, se generará un error fatal. 
+
+Una clase puede heredar solamente de una clase, pero puede implementar tantas interfaces como quiera.
+Las interfaces no definen propiedades y adicionalmente, todos los métodos deben ser públicos.
+			</interfaces>
+		</tema>
+		<tema>
+			<nota_interface>
+				It seems like many contributors are missing the point of using an INTERFACE. An INTERFACE is not specifically provided for abstraction. That's what a CLASS is used for. Most examples in this article of interfaces could be achieved just as easily using just classes alone. 
+
+An INTERFACE is provided so you can describe a set of functions and then hide the final implementation of those functions in an implementing class. This allows you to change the IMPLEMENTATION of those functions without changing how you use it. 
+
+For example: I have a database. I want to write a class that accesses the data in my database. I define an interface like this:
+
+interface Database {
+function listOrders();
+function addOrder();
+function removeOrder();
+...
+}
+
+Then let's say we start out using a MySQL database. So we write a class to access the MySQL database:
+
+class MySqlDatabase implements Database {
+function listOrders() {...
+}
+we write these methods as needed to get to the MySQL database tables. Then you can write your controller to use the interface as such:
+
+$database = new MySqlDatabase();
+foreach ($database->listOrders() as $order) {
+
+Then let's say we decide to migrate to an Oracle database. We could write another class to get to the Oracle database as such:
+
+class OracleDatabase implements Database {
+public function listOrders() {...
+}
+
+Then - to switch our application to use the Oracle database instead of the MySQL database we only have to change ONE LINE of code:
+
+$database = new OracleDatabase();
+
+all other lines of code, such as:
+
+foreach ($database->listOrders() as $order) {
+
+will remain unchanged. The point is - the INTERFACE describes the methods that we need to access our database. It does NOT describe in any way HOW we achieve that. That's what the IMPLEMENTing class does. We can IMPLEMENT this interface as many times as we need in as many different ways as we need. We can then switch between implementations of the interface without impact to our code because the interface defines how we will use it regardless of how it actually works. 
+			</nota_interface>
+		</tema>
+		<tema>
+			<clases_abstractas>
+				Las clases definidas como abstractas no se pueden instanciar y cualquier clase que contiene al menos un método abstracto debe ser definida como tal. Los métodos definidos como abstractos simplemente declaran la firma del método, pero no pueden definir la implementación. 
+				Cuando se hereda de una clase abstracta, todos los métodos definidos como abstractos en la declaración de la clase madre deben ser definidos en la clase hija; además, estos métodos deben ser definidos con la misma (o con una menos restrictiva) visibilidad
+			</clases_abstractas>
+		</tema>
+			<tema>
+				<operador_de_resolucion_de_ambito>
+El Operador de Resolución de Ámbito (también denominado Paamayim Nekudotayim) o en términos simples, el doble dos-puntos, es un token que permite acceder a elementos estáticos, constantes, y sobrescribir propiedades o métodos de una clase. 
+Cuando se hace referencia a estos items desde el exterior de la definición de la clase, se utiliza el nombre de la clase. 
+
+Cuando una clase extendida sobrescribe la definición parent de un método, PHP no invocará al método parent. Depende de la clase extendida el hecho de llamar o no al método parent. Esto también se aplica a definiciones de métodos Constructores y Destructores, Sobrecarga, y Mágicos. 
+				</operador_de_resolucion_de_ambito>
+			</tema>
+			<tema>
+				<poliformismo>
+					cuando hablamos de polimorfismo nos referimos a la capacidad de acceder a multiples funciones a traves del mismo interfaz. Es decir  que un mismo identificador, o funcion puede tener diferentes comportamientos en funcion del contexto en el que sea ejecutado
+				</poliformismo>
+			</tema>
+
+</Teoria_POO>
+<Teoria_de_XML>
+	<tema>
+		<concepto>
+XML, siglas en inglés de eXtensible Markup Language, traducido como "Lenguaje de Marcado Extensible" o "Lenguaje de Marcas Extensible", es un meta-lenguaje que permite definir lenguajes de marcas desarrollado por el World Wide Web Consortium (W3C) utilizado para almacenar datos en forma legible. Proviene del lenguaje SGML y permite definir la gramática de lenguajes específicos (de la misma manera que HTML es a su vez un lenguaje definido por SGML) para estructurar documentos grandes. A diferencia de otros lenguajes, XML da soporte a bases de datos, siendo útil cuando varias aplicaciones deben comunicarse entre sí o integrar información.1​
+XML no ha nacido únicamente para su aplicación en Internet, sino que se propone como un estándar para el intercambio de información estructurada entre diferentes plataformas. Se puede usar en bases de datos, editores de texto, hojas de cálculo y casi cualquier cosa imaginable.
+XML es una tecnología sencilla que tiene a su alrededor otras que la complementan y la hacen mucho más grande, con unas posibilidades mucho mayores. Tiene un papel muy importante en la actualidad ya que permite la compatibilidad entre sistemas para compartir la información de una manera segura, fiable y fácil
+		</concepto>
+	</tema>
+
+	<tema>
+		<Concepto>
+XML is a software- and hardware-independent tool for storing and transporting data.
+
+What is XML?
+XML stands for eXtensible Markup Language
+XML is a markup language much like HTML
+XML was designed to store and transport data
+XML was designed to be self-descriptive
+XML is a W3C Recommendation
+		</Concepto>
+	</tema>
+	<tema>
+		<simplifica_cosas>
+			XML Simplifies Things
+It simplifies data sharing
+It simplifies data transport
+It simplifies platform changes
+It simplifies data availability
+Many computer systems contain data in incompatible formats. Exchanging data between incompatible systems (or upgraded systems) is a time-consuming task for web developers. Large amounts of data must be converted, and incompatible data is often lost.
+XML stores data in plain text format. This provides a software- and hardware-independent way of storing, transporting, and sharing data.
+XML also makes it easier to expand or upgrade to new operating systems, new applications, or new browsers, without losing data.
+With XML, data can be available to all kinds of "reading machines" like people, computers, voice machines, news feeds, etc.
+
+XML is a W3C Recommendation
+XML became a W3C Recommendation as early as in February 1998.
+		</simplifica_cosas>
+			</tema>
+			<tema>
+				<Estructura>
+					*?xml version="1.0" encoding="UTF-8"?* 
+					 *vehiculos* 
+					 	*coche*    
+					 		*marca* Toyota*/marca*  
+					 		*modelo*Corolla*/modelo*  
+							 *fechaCompra*2002*/fechaCompra* 
+					 	*/coche*   
+					 	*coche*  
+					 		*marca>Honda*/marca* 
+					 		*modelo>Civic*/modelo* 
+					 		*fechaCompra*2003*/fechaCompra*
+						 */coche* 
+					 */vehiculos*
+					 http://isaacrobles.com/programacion/web-service-en-php-con-nusoap
+			</Estructura>
+			</tema>
+
+
+
+</Teoria_de_XML>
+
+<Teoría_de_AJAX>
+						<tema>
+				<Concepto>
+					XML y Java script asíncrono, Permite cambiar partes de una página, sin necesidad de rcargarla completa.
+					Su núcleo está basado en peticiones xmlHTTPRequest, el cual es una clase en Java script, con sus propiedades y métodos.
+				</Concepto>
+			</tema> 
+			<tema>
+				<algo_de_historia>
+La historia de AJAX está íntimamente relacionada con un objeto de programación llamado XMLHttpRequest. El origen de este objeto se remonta al año 2000, con productos como Exchange 2000, Internet Explorer 5 y Outlook Web Access.
+Todo comenzó en 1998, cuando Alex Hopmann y su equipo se encontraban desarrollando la entonces futura versión de Exchange 2000. El punto débil del servidor de correo electrónico era su cliente vía web, llamado OWA Outlook Web Access).
+Durante el desarrollo de OWA, se evaluaron dos opciones: un cliente formado sólo por páginas HTML estáticas que se recargaban constantemente y un cliente realizado completamente con HTML dinámico o DHTML. Alex Hopmann pudo ver las dos opciones y se decantó por la basada en DHTML. Sin embargo, para ser realmente útil a esta última le faltaba un componente esencial: "algo" que evitara tener que enviar continuamente los formularios con datos al servidor.
+Motivado por las posibilidades futuras de OWA, Alex creó en un solo fin de semana la primera versión de lo que denominó XMLHTTP. La primera demostración de las posibilidades de la nueva tecnología fue un éxito, pero faltaba lo más difícil: incluir esa tecnología en el navegador Internet Explorer.
+Si el navegador no incluía XMLHTTP de forma nativa, el éxito del OWA se habría reducido enormemente. El mayor problema es que faltaban pocas semanas para que se lanzara la última beta de Internet Explorer 5 previa a su lanzamiento final. Gracias a sus contactos en la empresa, Alex consiguió que su tecnología se incluyera en la librería MSXML que incluye Internet Explorer.
+De hecho, el nombre del objeto (XMLHTTP) se eligió para tener una buena excusa que justificara su inclusión en la librería XML de Internet Explorer, ya que este objeto está mucho más relacionado con HTTP que con XML.
+				</algo_de_historia>
+			</tema>
+			<tema>
+				<pasos_iniciales_en_detalle>
+La aplicación AJAX del ejemplo anterior se compone de cuatro grandes bloques: instanciar el objeto XMLHttpRequest, preparar la función de respuesta, realizar la petición al servidor y ejecutar la función de respuesta.
+Todas las aplicaciones realizadas con técnicas de AJAX deben instanciar en primer lugar el objeto XMLHttpRequest, que es el objeto clave que permite realizar comunicaciones con el servidor en segundo plano, sin necesidad de recargar las páginas.
+La implementación del objeto XMLHttpRequest depende de cada navegador, por lo que es necesario emplear una discriminación sencilla en función del navegador en el que se está ejecutando el código:
+if(window.XMLHttpRequest) {  // Navegadores que siguen los estándares
+  peticion_http = new XMLHttpRequest();
+}
+else if(window.ActiveXObject) {  // Navegadores obsoletos
+  peticion_http = new ActiveXObject("Microsoft.XMLHTTP");
+}
+Los navegadores que siguen los estándares (Firefox, Safari, Opera, Internet Explorer 7 y 8) implementan el objeto XMLHttpRequest de forma nativa, por lo que se puede obtener a través del objeto window. Los navegadores obsoletos (Internet Explorer 6 y anteriores) implementan el objeto XMLHttpRequest como un objeto de tipo ActiveX.
+Una vez obtenida la instancia del objeto XMLHttpRequest, se prepara la función que se encarga de procesar la respuesta del servidor. La propiedad onreadystatechange del objeto XMLHttpRequest permite indicar esta función directamente incluyendo su código mediante una función anónima o indicando una referencia a una función independiente. En el ejemplo anterior se indica directamente el nombre de la función:
+peticion_http.onreadystatechange = muestraContenido;
+El código anterior indica que cuando la aplicación reciba la respuesta del servidor, se debe ejecutar la función muestraContenido(). Como es habitual, la referencia a la función se indica mediante su nombre sin paréntesis, ya que de otro modo se estaría ejecutando la función y almacenando el valor devuelto en la propiedad onreadystatechange.
+Después de preparar la aplicación para la respuesta del servidor, se realiza la petición HTTP al servidor:
+peticion_http.open('GET', 'http://localhost/prueba.txt', true);
+peticion_http.send(null);
+Las instrucciones anteriores realizan el tipo de petición más sencillo que se puede enviar al servidor. En concreto, se trata de una petición de tipo GET simple que no envía ningún parámetro al servidor. La petición HTTP se crea mediante el método open(), en el que se incluye el tipo de petición (GET), la URL solicitada (http://localhost/prueba.txt) y un tercer parámetro que vale true.
+Una vez creada la petición HTTP, se envía al servidor mediante el método send(). Este método incluye un parámetro que en el ejemplo anterior vale null. Más adelante se ven en detalle todos los métodos y propiedades que permiten hacer las peticiones al servidor.
+Por último, cuando se recibe la respuesta del servidor, la aplicación ejecuta de forma automática la función establecida anteriormente.
+function muestraContenido() {
+  if(peticion_http.readyState == 4) {
+    if(peticion_http.status == 200) {
+      alert(peticion_http.responseText);
+    }
+  }
+}
+La función muestraContenido() comprueba en primer lugar que se ha recibido la respuesta del servidor (mediante el valor de la propiedad readyState). Si se ha recibido alguna respuesta, se comprueba que sea válida y correcta (comprobando si el código de estado HTTP devuelto es igual a 200). Una vez realizadas las comprobaciones, simplemente se muestra por pantalla el contenido de la respuesta del servidor (en este caso, el contenido del archivo solicitado) mediante la propiedad responseText.
+				</pasos_iniciales_en_detalle>
+			</tema>
+
+			<tema>
+				<metodos_xmlHTTPRequest>
+<tema>
+	Métodos
+XMLHttpRequest Object Methods
+Method
+Description
+</tema>
+<tema>
+new XMLHttpRequest()
+Creates a new XMLHttpRequest object
+</tema>
+<tema>
+abort()
+Cancels the current request
+</tema>
+<tema>
+getAllResponseHeaders()
+Returns header information
+</tema>
+<tema>
+getResponseHeader()
+
+Returns specific header information
+</tema>
+<tema>
+
+open(method,url,async,user,psw)
+Specifies the request
+</tema>
+
+<tema>
+method: the request type GET or POST
+</tema>
+<tema>
+url: the file location
+</tema>
+<tema>
+async: true (asynchronous) or false (synchronous)
+</tema>
+<tema>
+user: optional user name
+</tema>
+<tema>
+psw: optional password
+</tema>
+
+<tema>
+send()
+Sends the request to the server
+
+Used for GET requests
+</tema>
+<tema>
+send(string)
+Sends the request to the server.
+Used for POST requests
+</tema>
+<tema>
+setRequestHeader()
+Adds a label/value pair to the header to be sent
+</tema>
+
+
+			</metodos_xmlHTTPRequest>
+
+			</tema>
+			<tema>
+				<propiedades_xmlHTTPRequest>
+					Property
+Description
+onreadystatechange
+Defines a function to be called when the readyState property changes
+readyState
+Holds the status of the XMLHttpRequest.
+0: request not initialized 
+1: server connection established
+2: request received 
+3: processing request 
+4: request finished and response is ready 
+responseText
+Returns the response data as a string
+responseXML
+Returns the response data as XML data
+status
+Returns the status-number of a request
+200: "OK"
+403: "Forbidden"
+404: "Not Found"
+For a complete list go to the Http Messages Reference
+statusText
+Returns the status-text (e.g. "OK" or "Not Found")
+
+
+			</propiedades_xmlHTTPRequest>
+
+			</tema>
+			<tema>
+				<pasos>
+1. An event occurs in a web page (the page is loaded, a button is clicked)
+2. An XMLHttpRequest object is created by JavaScript
+3. The XMLHttpRequest object sends a request to a web server
+4. The server processes the request
+5. The server sends a response back to the web page
+6. The response is read by JavaScript
+7. Proper action (like page update) is performed by JavaScript
+				</pasos>
+			</tema>
+
+
+		</Teoría_de_AJAX>
+		<Teoría_de_JSON>
+			<tema>
+				<concepto>
+JSON: JavaScript Object Notation.
+JSON is a syntax for storing and exchanging data.
+JSON is text, written with JavaScript object notation.
+Exchanging Data
+
+When exchanging data between a browser and a server, the data can only be text.
+JSON is text, and we can convert any JavaScript object into JSON, and send JSON to the server.
+We can also convert any JSON received from the server into JavaScript objects.
+This way we can work with the data as JavaScript objects, with no complicated parsing and translations.
+				</concepto>
+			</tema>
+			<tema>
+				<Porqué_usar_JSON>
+					Why use JSON?
+Since the JSON format is text only, it can easily be sent to and from a server, and used as a data format by any programming language.
+JavaScript has a built in function to convert a string, written in JSON format, into native JavaScript objects:
+JSON.parse()
+So, if you receive data from a server, in JSON format, you can use it like any other JavaScript object.
+				</Porqué_usar_JSON>
+			</tema>
+			<tema>
+				<Reglas_JSON>
+JSON Syntax Rules
+JSON syntax is derived from JavaScript object notation syntax:
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+					</Reglas_JSON>
+			</tema>
+			<tema>
+				<Porqué_JSON>
+Why JSON is Better Than XML
+XML is much more difficult to parse than JSON.
+JSON is parsed into a ready-to-use JavaScript object.
+				</Porqué_JSON>
+			</tema>
+			<tema>
+				<Tipo_Data>
+					Valid Data Types
+In JSON, values must be one of the following data types:
+a string
+a number
+an object (JSON object)
+an array
+a boolean
+null
+JSON values cannot be one of the following data types:
+a function
+a date
+undefined
+				</Tipo_Data>
+			</tema>
+		</Teoría_de_JSON>
+		<Patrones_de_Diseño_en_PHP>
+			<tema>
+				<concepto>
+Los patrones de diseño, design patterns, son métodos reusables para solucionar problemas de diseño comunes dentro de un contexto. Es una descripción o plantilla de cómo solucionar un problema que puede usarse en múltiples situaciones y lenguajes. Los patrones están formalizados como "mejores prácticas" que el desarrollador puede usar para resolver problemas comunes cuando diseña una aplicación. Esto no significa que tengan que aplicarse siempre, depende del criterio del desarrollador cuándo y cómo aplicarlos en una situación y proyecto concretos.
+
+Los patrones de diseño pueden mejorar el proceso y rendimiento del desarrollo. Un diseño de proyecto efectivo requiere considerar problemas que pueden no verse hasta después en la implementación. Reusar patrones de diseño ayuda a prevenir problemas que pueden causar mayores problemas y mejora la legibilidad del código para desarrolladores familiarizados con los patrones.
+A menudo la gente sólo entiende cómo aplicar determinados patrones para problemas concretos, esto es debido a que estas técnicas son difíciles de aplicar para un rango amplio de problemas. Los patrones de diseño proveen soluciones generales, documentadas en un formato que no requiere reglas específicas para problemas específicos. Los patrones más comunes van mejorando con el tiempo, haciéndolos más robutos y efectivos.
+				</concepto>
+			</tema>
+			<tema>
+				<Creational_patterns>
+Tratan la instancia de las clases. Estos patrones pueden dividirse después en class-creation patterns y object-creational patterns. Mientras que los class-creation patterns utilizan la herencia en el proceso de instanciación, object-creation patterns utilizan la delegación para terminar la tarea.
+
+Abstract factory. Crea una instancia de diferentes familias de clases.
+Builder. Separa la construcción de objetos de su representación.
+Factory method. Crea una instancia de varias clases derivadas.
+Object pool. Evita adquisiciones costosas y libera recursos reciclando objetos que no se usan.
+Prototype. Una instancia iniciada lista para ser copiada o clonada.
+Singleton. Una clase de la que sólo puede existir una instancia.
+				</Creational_patterns>	
+				</tema>
+				<tema>
+					<Structural_patterns>
+Tratan la composición de clases y objetos. Los patrones structural class-creation utilizan la herencia para componer interfaces. Los patrones structural object-patterns definen formas de componer objetos para obtener nueva funcionalidad.
+
+Adapter. Ajusta las interfaces de distintas clases para que coincidan.
+Bridge. Separa la interface de un objeto de su implementación. 
+Composite. Una estructura en árbol de objetos simples y compuestos.
+Decorator. Añade responsabilidades a objetos de forma dinámica.
+Facade. Una clase simple que representa un subsistema entero.
+Flyweight. Ligera instancia usada para que sea eficiente de compartir.
+Proxy. Un objeto que representa a otro objeto.
+						</Structural_patterns>
+				</tema>
+				<tema>
+					<Behavioral_patterns>
+Tratan la comunicación de las clases de los objetos, y por tanto tratan la comunicación entre objetos.
+Chain of responsibility. Forma de pasar un request entre una cadena de objetos.
+
+Command. Encapsula un command request como un objeto.
+Interpreter. Forma de incluir elementos del lenguaje en un programa.
+Iterator. Acceder a elementos de una colección de forma secuencial.
+Mediator. Define una comunicación simplificada entre clases.
+Memento. Captura y restaura el estado interno de un objeto.
+Null Object. Diseñado para actuar como valor por defecto de un objeto.
+State. Altera el comportamiento de un objeto.
+Strategy. Encapsula un algoritmo dentro de una clase.
+Template method. Aplaza los pasos exactos de un algoritmo a una subclase.
+Visitor. Define una nueva operación a una clase sin cambios.
+						</Behavioral_patterns>
+				</tema>
+				<tema>
+					<Architectural_patterns>
+Tienen una aplicación más amplia que las anteriores pero tienen un rango más amplio de posibilidades. Son muy utilizados en los frameworks actuales de PHP.
+
+Front controller. Proporciona una forma centralizada de manejar los requests.
+MVC. Model-View-Controller. Divide una aplicación en tres partes interconectadas, separando las partes internas de la representación.
+ADR. Action-Domain-Responder. Se plantea como un patrón MVC más refinado y orientado al desarrollo web. 
+Service locator. Emplea un registro central que devuelve información necesaria para tareas cuando se hacen peticiones.
+Active record. Acceso de datos de una base de datos mediante un objeto.
+Publish-subscribe. Forma de notificar los cambios en un número de clases.
+Inversion of control. Diseño que invierte el funcionamiento tradicional en el que el código customizado llama a librerías reusables.
+						</Architectural_patterns>
+				</tema>
+				<tema>
+					<Otros_patterns>
+Estos patterns no están dentro de ninguna de las categorías anteriores, pero también son muy utilizados en los patrones de diseño y en los frameworks:
+
+Dependency Injection. Implementa Inversion of control para resolver dependencias, que son objetos que pueden usarse (services).
+Lazy loading. Difiere el inicio de la iniciación de un objeto hasta el punto en el que se necesite, lo que contribuye al rendimiento.
+Mock object. Objeto simulado que imita el comportamiento de objetos de forma controlada (creados especialmente para hacer testing).
+Table Data Gateway. Un objeto actúa como gateway de una base de datos.
+						</Otros_patterns>
+				</tema>	
+				<tema>
+					<algunos_patrones_ejemplo>
+						1. Factory pattern
+El Factory pattern define una interfaz para crear un objeto, pero deja a las subclases decidir que clase instanciar. Este patrón permite a una clase ceder la instanciación a las subclases.
+El patrón método de fábrica es un patrón de diseño creacional que hace exactamente lo siguiente: Es una clase que actúa como una fábrica de instancias de objetos.
+El principal objetivo de este patrón es encapsular el procedimiento creacional que diferentes clases pueden tener, en una sólo función. Al proporcionar el contexto adecuado al método de fábrica, éste será capaz de devolver el objeto correcto.
+El patrón método de fábrica es un patrón de diseño creacional que hace exactamente lo siguiente: Es una clase que actúa como una fábrica de instancias de objetos.
+El principal objetivo de este patrón es encapsular el procedimiento creacional que diferentes clases pueden tener, en una sólo función. Al proporcionar el contexto adecuado al método de fábrica, éste será capaz de devolver el objeto correcto.
+¿Cuándo puedo usar esto? 
+
+El mejor momento para utilizar el patrón de método de fábrica es cuando tienes múltiples variantes de una sola entidad. Digamos que tienes una clase button, esta clase tiene diferentes variaciones, como ImageButton, inputButton y FlashButton. Dependiendo del lugar, es posible que deba crear diferentes botones -aquí es donde podemos utilizar una fábrica para crear los botones, en lugar tuyo!
+
+						2. Singleton pattern
+Este patrón simplemente restringe la instanciación de una clase a un objeto. Es útil cuando se necesita exactamente un objeto para coordinar las acciones en la aplicación. A menudo es utilizado en situaciones en las que no es beneficioso, ya que añade restricciones innecesarias. Muchos recomiendan no utilizar nunca singletons (también es engorroso a la hora de hacer testing) y tratar de emplear dependency injection en su lugar.
+
+El patrón de diseño Singleton es un patrón de diseño creacional que se asegura de tener una sola instancia de una clase particular durante su tiempo de ejecución, y proporciona un punto de acceso global a ella. 
+Esto permite configurar un punto de “coordinación” para otros objetos que utilicen la instancia singleton; asimismo, las variables singleton siempre serán las mismas y estarán disponibles para todos los demás objetos de la aplicación, que las llamen.
+¿Cuándo puedo usarlo? 
+
+Si necesitamos pasar una instancia específica de una clase a otra, podemos usar el patrón de instancia única para evitar tener que pasar la instancia vía el constructor o un argumento. Imagina que haz creado una clase Session, que simula el array global $_SESSION. 
+
+						3. Adapter pattern
+El Adapter pattern sirve para hacer que las clases existentes funcionen con otras sin modificar sus contenidos. Son útiles cuando quieres utilizar una clase que no tiene los métodos exactos que necesitas y no puedes cambiar la clase original o quieres adaptar varias clases para una funcionalidad común.
+
+El patrón adaptador es un patrón de diseño estructural que nos permite reutilizar una clase con una interfaz diferente, lo que permite ser utilizada por un sistema que utiliza diferentes métodos de llamada.
+Esto también nos permite cambiar algunos campos que están siendo recibidos de la clase cliente, convirtiéndolos en algo compatible con las funciones adaptadas.
+
+						4. Decorator pattern
+Este patrón añade comportamientos específicos en la instancia de una clase en lugar de adjuntarlos al objeto. Proporciona una alternativa flexible a la herencia para extender funcionalidades.
+
+El patrón decorador es un patrón de diseño estructural que nos permite añadir comportamientos nuevos, o adicionales, a un objeto en tiempo de ejecución, dependiendo de la situación.
+El objetivo es hacerlo de tal manera que las funciones extendidas se puedan aplicar a un caso concreto y, al mismo tiempo, mantener la posibilidad de crear una instancia original que no tienen las nuevas funciones. También permite combinar múltiples decoradores a una instancia, por lo que no hay que trabajar con un decorador para cada instancia. Este patrón es una alternativa a la subclase, la cual crea una clase que hereda funcionalidad de una clase padre. A diferencia de la subclase, que añade el comportamiento en tiempo de compilación, este patrón nos permite agregar un nuevo comportamiento en tiempo de ejecución, si la situación así lo requiere.
+Para implementar el patrón Decorator, debemos seguir los siguientes pasos:
+Crear una subclase de la clase original “Component” en una clase “Decorator”
+En la clase Decorator, debemos añadir un Puntero a Component como un campo
+Pasar un Component al constructor de Decorator para inicializar el puntero Component
+En la clase Decorator, redirigir todos los metodos Component al puntero Component, y
+En la clase Decorator, sobreescribir cualquier método Component cuyo comportamiento deba ser modificado
+Pasos cortesía de la wikpedia.
+¿Cuándo puedo usarlo? 
+
+El mejor lugar para usar el patrón Decorator es cuando tenemos una entidad que necesita tener un nuevo comportamiento sólo si la situación así lo requiere. Por ejemplo, tenemos un elemento enlace HTML, un enlace para cerrar sesión, que queremos realice cosas diferentes basados en la página en la que aparece. Para ello, podemos usar el patrón decorador. 
+Primero, definimos las diferentes “decoraciones” que necesitaremos. 
+Si estamos en la portada como usuarios loggeados, tener el enlace dentro de etiquetas *H2*.
+Si estamos en una página distinta como usuarios loggeados, tener un enlace con subrayado.
+Si estamos loggeados, tener un enlace dentro de etiquetas *strong*.
+
+						5. Strategy pattern
+Strategy pattern permite que el comportamiento de un algoritmo se seleccione en tiempo de ejecución. El patrón define una familia de algoritmos, encapsula cada algoritmo y hace que los algoritmos sean intercambiables en esa familia. De esta forma el algoritmo varía independientemente de los clientes que lo usen.
+Permite definir y elegir una implementación dinámicamente y variar esa implementación independientemente del objeto. Surge cuando se necesitan añadir diferentes comportamientos de forma dinámica entre diferentes tipos de objetos.
+Este patrón potencia así el principio de la programación orientada a objetos Open/Closed, que dice que las clases y los métodos han de estar abiertos para su extensión y cerrados para su modificación. De esta forma si queremos añadir comportamientos lo que se ha de hacer es extender las clases, que se puede hacer con herencia, pero mediante el patrón strategy puede ser más efectivo.
+
+Imagina que estas desarrollando una clase que puede crear o actualizar el registro de un nuevo usuario. Igual, necesitas los mismos campos (name, address, mobile number, etc.); pero, dependiendo de la situación, tienes que usar funciones diferentes para cuando creas y para cuando actualizas. Ahora, probablemente solo uses una condición if-else para conseguirlo; sin embargo, ¿que sucedería si necesitaras usar esta clase en un lugar diferente? En este caso, tendrías que reescribir la misma condición if-else otra vez. ¿No sería más fácil especificar su contexto?
+
+						6. Model-View-Controller pattern
+Este patrón divide la aplicación en tres partes interconectadas (model, view, controller), de forma que la representación de la información queda separada del funcionamiento interno de la aplicación, lo que la hace mucho más segura. Es uno de los patrones en los que se fundamentan los frameworks actuales y la mayoría de aplicaciones web:
+Model. Recopila los datos.
+Controller. Maneja y distribuye los datos. Es el puente entre el Model y el View.
+View. Representa los datos.
+Se suele procurar que los controllers sean reducidos, de forma que se cargue el mayor peso posible en los models. 
+
+						7. Action-Domain-Responder pattern
+El ADR es una versión mejorada del MVC pattern. Los mensajes HTTP se dividen en headers y en el body, y el patrón MVC sólo tiene en cuenta el body. En el ADR el view se transforma en una implementación más específica de respuesta que tiene en cuenta todos los aspectos de la respuesta HTTP: sesiones, cookies, HTML, content types, etc.
+El Action pasa el imput al Domain, el cual devuelve algunos datos al Action de nuevo para que los envíe al Responder. En escenarios muy simples puede resultar suficiente con que el Responder determine cómo presentar los datos. En escenarios más complejos tiene más sentido que el Domain pase los datos de forma que determine la forma y en estado de los mismos. Domain tiene la business logic, Action tiene la routing logic y Responder tiene la response logic.
+
+						8. Active Record pattern
+Este patrón sirve para acceder a datos de una base de datos. Una tabla o view de una base de datos se encapsula en una clase, de forma que el objeto instanciado puede manipular la tabla en función de los métodos que se hayan creado para manipularla.
+
+https://en.wikipedia.org/wiki/Source_code
+http://www.baluart.net/articulo/introduccion-a-los-patrones-de-diseno-con-php
+						</algunos_patrones_ejemplo>
+				</tema>		
+		</Patrones_de_Diseño_en_PHP>
+		<Practica_1>
+			<tema>
+				<ejercicio_1>
+Elaborar un programa en PHP que genere diez archivos txt en cincuenta sitios diferentes. Es decir, diez archivos por sitio, que contengan los siguientes campos: Velocidad subida, velocidad de bajada, retardo, pérdidas. El nombre del archivo está relacionado al sitio. Realizar una tabla que relacione el nombre del archivo con el detalle del sitio (Estado, ciudad, central). Los diez archivo son diez fechas consecutivas. 
+Cada archivo tendrá un total de 100 entradas. Los datos a almacenar se generarán en la siguiente forma: función Ramdon que genera velocidades de subida entre 2 Mbps y 10 Mbps, velocidades de bajada entre 500 Kbps y 1Mbps, retardo entre 50 y 150 milisegundos, pérdidas entre 0 y 10 (indica porcentaje de pérdidas).
+				</ejercicio_1>
+
+
+			</tema>
+			<tema>
+				<ejercicio_2>
+Los 500 archivos generados en el primer ejercicio conformar un único archivo Mysql que contenga los campos de los txt, el código de la central y otra tabla Mysql con los códigos y el detalle del sitio. El campo que ancla las dos BD es el código. Craer igualmente un campo incremental automático. Para ello elaborar un programa en PHP.
+				</ejercicio_2>
+
+			</tema>
+			<tema>
+				<ejercicio_3>
+Elaborar un programa que englobe las opciones del ejercicio 1 y 2, y adicionalmente el que se especifica a continuación: Calcular los promedios por sitio en cada uno de los campos, con la división estándar. según la velocidad de bajada, indicar el sitio mejor servido y el peor, con más retardo y el menor, con mayor y menor pérdidas.
+
+Indicar el promedio por tiempo, y cual es el tiempo mejor servido y el peor.
+				</ejercicio_3>
+
+			</tema>
+			<tema>
+				<ejercicio_4>
+Utilizando los patrones de diseño, elabore un programa que de el reporte de todos los registros creados en Mysql, con el detalle de los sitios. Es decir, todas las columnas.
+				</ejercicio_4>
+
+			</tema>
+		</Practica_1>
+
+
+</teoria>
+
